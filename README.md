@@ -10,14 +10,15 @@ Link code mẫu các màn người dùng: [PHPGurukul](https://phpgurukul.com/ol
 * Tải database lên chạy trên PHPMyAdmin
 1. Bật XAMPP Control Panel lên, ấn Start 2 mục là Apache và MariaDB.
 2. Mở link [phpmyadmin](http://localhost/phpmyadmin)
-3. Tạo một database tên đúng là ```ABC```
-4. Import file sql đi kèm trong folder source code vào database ```ABC``` vừa tạo
-5. Chú ý phần ```define('DB_NAME', 'oahmsdb');``` trong file ```includes/config.php``` khớp với tên ```ABC``` của database.
+3. Chú ý phần ```define('DB_NAME', 'tên gì đó');``` trong file ```includes/config.php``` khớp với tên của database.
+4. Tạo một database tên giống như vậy
+5. Import file sql đi kèm trong folder source code vào database vừa tạo
 * Chạy localhost:
 1. Mở browser và chạy link “http://localhost/ABC”
 2. Student info: Eg: Student ID - 20205093, Class ID - 138000
 3. Admin info: Eg: Username - admin, Password: 123456
-
+* Đặt tên:
+1. Project chung đặt chung tên tất cả mọi thứ: tên folder, tên database là ```jishotech```
 # SRMS divided in two modules:
 ## GUEST:
 
