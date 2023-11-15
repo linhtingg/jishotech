@@ -19,6 +19,7 @@ Link code mẫu các màn người dùng: [PHPGurukul](https://phpgurukul.com/ol
 3. Admin info: Eg: Username - admin, Password: 123456
 * Đặt tên:
 1. Project chung đặt chung tên tất cả mọi thứ: tên folder, tên database là ```jishotech```
+2. Bỏ tạm MySQL đi đỡ conflict
 # SRMS divided in two modules:
 ## GUEST:
 
