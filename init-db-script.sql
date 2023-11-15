@@ -1,6 +1,6 @@
--- Create the nnn_db database
-CREATE DATABASE IF NOT EXISTS nnn_db;
-USE nnn_db;
+-- Create the jishotech database
+CREATE DATABASE IF NOT EXISTS jishotech;
+USE jishotech;
 
 -- Create Topics table
 CREATE TABLE topics (
