@@ -3,7 +3,8 @@
 
 Link code mẫu tham khảo: [PHPGurukul](https://phpgurukul.com/old-age-home-management-system-using-php-and-mysql/#google_vignette)
 <br/>
-*Nên tải code mẫu về và chạy riêng ra một thư mục khác nhé. Chủ yếu các chức năng xoay quanh session, lấy record từ database, foreach, form handling,...*
+*Nên tải code mẫu về và chạy riêng ra một thư mục khác nhé.* <br/>
+*Chủ yếu các chức năng xoay quanh session, lấy record từ database, foreach, form handling,...*
 <br/>
 * Hướng dẫn set up code mẫu PHP với VSCode và XAMPP:
 1. Download và setup XAMPP (y như Google)
