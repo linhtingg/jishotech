@@ -1,7 +1,10 @@
 # IT用語をマスターしよう！
 ## Run on: XAMPP (MariaDB & Apache)
-Link code mẫu các màn guest: nhánh Initial<br/>
-Link code mẫu các màn người dùng: [PHPGurukul](https://phpgurukul.com/old-age-home-management-system-using-php-and-mysql/#google_vignette)
+
+Link code mẫu tham khảo: [PHPGurukul](https://phpgurukul.com/old-age-home-management-system-using-php-and-mysql/#google_vignette)
+<br/>
+*Nên tải code mẫu về và chạy riêng ra một thư mục khác nhé.* <br/>
+*Chủ yếu các chức năng xoay quanh session, lấy record từ database, foreach, form handling,...*
 <br/>
 * Hướng dẫn set up code mẫu PHP với VSCode và XAMPP:
 1. Download và setup XAMPP (y như Google)
@@ -21,8 +24,11 @@ Link code mẫu các màn người dùng: [PHPGurukul](https://phpgurukul.com/ol
 ## Lưu ý:
 1. Project chung đặt chung tên tất cả mọi thứ: tên folder, tên database là ```jishotech```
 2. Bỏ tạm MySQL đi đỡ conflict port 3306
-<br/>
-
+3. Để ý folder làm việc. Các màn chức năng của user thì đều đặt ở trong folder ```user```
+4. Bỏ phần session start ở đầu các file trong folder ```user``` đi (để đỡ phải đăng nhập)
+5. Mỗi chức năng tạo một branch mới >> Sau khi code xong thì tạo pull request và merge vào main >> Đóng luôn branch  lại. Xong chức năng nào là xong oke luôn không phải quay lại nhiều.
+6. Khi merge pull request vào main chỉ cần 1 người review là có thể merge 
+*nhưng có thể by pass bằng tick vào force merge nếu lúc đó không nhờ được ai*
 # JishoTech is divided in two modules:
 
 ## GUEST:
