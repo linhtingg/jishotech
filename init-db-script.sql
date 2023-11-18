@@ -4,13 +4,13 @@ USE jishotech;
 
 -- Create Topics table
 CREATE TABLE topics (
-    id_topic INT PRIMARY KEY,
+    id_topic INT PRIMARY KEY AUTO_INCREMENT,
     topic_name VARCHAR(255) NOT NULL
 );
 
 -- Create Words table
 CREATE TABLE words (
-    id_word INT PRIMARY KEY,
+    id_word INT PRIMARY KEY AUTO_INCREMENT,
     kanji VARCHAR(255),
     katakana VARCHAR(255),
     romaji VARCHAR(255),
@@ -23,7 +23,7 @@ CREATE TABLE words (
 
 -- Create WordTopic table
 CREATE TABLE wordtopic (
-    id_wordtopic INT PRIMARY KEY,
+    id_wordtopic INT PRIMARY KEY AUTO_INCREMENT,
     id_topic INT NOT NULL,
     id_word INT NOT NULL,
     FOREIGN KEY (id_topic) REFERENCES topics(id_topic),
@@ -32,9 +32,9 @@ CREATE TABLE wordtopic (
 
 -- Create User table
 CREATE TABLE users (
-    id_user INT PRIMARY KEY,
+    id_user INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,    
     password VARCHAR(255) NOT NULL,
     phone_number INT,
     status INT NOT NULL
@@ -42,7 +42,7 @@ CREATE TABLE users (
 
 -- Create Bookmark table
 CREATE TABLE bookmarks (
-    id_bookmark INT PRIMARY KEY,
+    id_bookmark INT PRIMARY KEY AUTO_INCREMENT,
     id_word INT NOT NULL,
     id_user INT NOT NULL,
     FOREIGN KEY (id_word) REFERENCES words(id_word),
@@ -51,7 +51,7 @@ CREATE TABLE bookmarks (
 
 -- Create Quizz table
 CREATE TABLE quizzes (
-    id_quizz INT PRIMARY KEY,
+    id_quizz INT PRIMARY KEY AUTO_INCREMENT,
     id_topic INT NOT NULL,
     id_user INT NOT NULL,
     question VARCHAR(255) NOT NULL,
@@ -70,7 +70,8 @@ CREATE TABLE quizzes (
  (6, '機械学習');;
 
 -- Insert words into words table
-INSERT INTO `jishotech`.`words` (`id_word`, `kanji`, `katakana`, `romaji`, `hiragana`, `meaning`, `example`, `status`, `link`) VALUES (1, '登録', NULL, NULL, 'とうろく', 'Đăng ký', NULL, NULL, NULL),
+INSERT INTO `jishotech`.`words` (`id_word`, `kanji`, `katakana`, `romaji`, `hiragana`, `meaning`, `example`, `status`, `link`) VALUES 
+ (1, '登録', NULL, NULL, 'とうろく', 'Đăng ký', NULL, NULL, NULL),
  (2, '連絡先', NULL, NULL, 'れんらくさき', 'Thông tin liên lạc', NULL, NULL, NULL),
  (3, '大事', NULL, NULL, 'だいじ', 'Quan trọng', NULL, NULL, NULL),
  (4, '情報資産', NULL, NULL, 'じょうほうしさん', 'Tài sản thông tin', NULL, NULL, NULL),

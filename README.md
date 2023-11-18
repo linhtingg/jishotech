@@ -24,8 +24,11 @@ Link code mẫu tham khảo: [PHPGurukul](https://phpgurukul.com/old-age-home-ma
 ## Lưu ý:
 1. Project chung đặt chung tên tất cả mọi thứ: tên folder, tên database là ```jishotech```
 2. Bỏ tạm MySQL đi đỡ conflict port 3306
-<br/>
-
+3. Để ý folder làm việc. Các màn chức năng của user thì đều đặt ở trong folder ```user```
+4. Bỏ phần session start ở đầu các file trong folder ```user``` đi (để đỡ phải đăng nhập)
+5. Mỗi chức năng tạo một branch mới >> Sau khi code xong thì tạo pull request và merge vào main >> Đóng luôn branch  lại. Xong chức năng nào là xong oke luôn không phải quay lại nhiều.
+6. Khi merge pull request vào main chỉ cần 1 người review là có thể merge 
+*nhưng có thể by pass bằng tick vào force merge nếu lúc đó không nhờ được ai*
 # JishoTech is divided in two modules:
 
 ## GUEST:
