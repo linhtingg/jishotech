@@ -11640,7 +11640,7 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
-  width: 100%;
+  width: 40%;
 }
 
 .fade {
@@ -13017,42 +13017,6 @@ input[type="button"].btn-block {
     flex-basis: auto;
   }
   .navbar-expand-md .navbar-toggler {
-    display: none;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid, .navbar-expand-lg > .container-sm, .navbar-expand-lg > .container-md, .navbar-expand-lg > .container-lg, .navbar-expand-lg > .container-xl {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-expand-lg {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-  }
-  .navbar-expand-lg .navbar-nav {
-    flex-direction: row;
-  }
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-    position: absolute;
-  }
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-  }
-  .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid, .navbar-expand-lg > .container-sm, .navbar-expand-lg > .container-md, .navbar-expand-lg > .container-lg, .navbar-expand-lg > .container-xl {
-    flex-wrap: nowrap;
-  }
-  .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
-    flex-basis: auto;
-  }
-  .navbar-expand-lg .navbar-toggler {
     display: none;
   }
 }
@@ -23982,7 +23946,8 @@ div.tagsinput span.tag a {
 }
 
 .auth .auth-form-light {
-  background: #ffffff;
+  background: #1ca9d1;
+  border-radius: 20px;
 }
 
 .auth .auth-form-light select {
@@ -24052,8 +24017,8 @@ div.tagsinput span.tag a {
 .auth form .form-group .form-control, .auth form .form-group .select2-container--default .select2-selection--single, .select2-container--default .auth form .form-group .select2-selection--single, .auth form .form-group .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single .auth form .form-group .select2-search__field, .auth form .form-group .typeahead,
 .auth form .form-group .tt-query,
 .auth form .form-group .tt-hint {
-  background: transparent;
-  border-radius: 0;
+  background: white;
+  border-radius: 10px;
   font-size: .9375rem;
 }
 
@@ -24398,41 +24363,6 @@ div.tagsinput span.tag a {
 }
 
 /* Navbar */
-.navbar {
-  font-weight: 400;
-  transition: background 0.25s ease;
-  -webkit-transition: background 0.25s ease;
-  -moz-transition: background 0.25s ease;
-  -ms-transition: background 0.25s ease;
-  border-bottom: 4px solid #844fc1;
-  /* Navbar color variations */
-}
-
-.navbar .navbar-brand-wrapper {
-  background: #844fc1;
-  transition: width 0.25s ease, background 0.25s ease;
-  -webkit-transition: width 0.25s ease, background 0.25s ease;
-  -moz-transition: width 0.25s ease, background 0.25s ease;
-  -ms-transition: width 0.25s ease, background 0.25s ease;
-  width: calc(236px + 0.5rem);
-  height: 4.625rem;
-}
-
-.navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper {
-  margin-right: 1.3rem;
-  margin-left: 1.8rem;
-}
-
-.navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand {
-  color: #27367f;
-  font-size: 1.5rem;
-  margin-right: 0;
-  padding: .25rem 0;
-}
-
-.navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand.brand-logo-mini {
-  display: none;
-}
 
 @media (max-width: 991px) {
   .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand.brand-logo-mini {
