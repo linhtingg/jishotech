@@ -1,57 +1,32 @@
-<!-- header -->
-<header class="header container-fluid">
-  <div class="header-left">
-    <div class="logo text-center">
-    <a href="#" class="logo__link">JishoTech</a>
-    </div>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand me-lg-5 me-0" href="index.php">
+      <img src="images/pod-talk-logo.png" class="logo-image img-fluid" alt="templatemo pod talk">
+    </a>
+    <!-- Search bar -->
+    <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
+      <div class="input-group input-group-lg">
+        <input name="search" type="search" class="form-control" id="search" placeholder="Search Podcast"
+          aria-label="Search">
+        <button type="submit" class="form-control" id="submit">
+          <i class="bi-search"></i>
+        </button>
+      </div>
+    </form>
+    <!-- End of search bar -->
 
-    <div class="header-navbar">
-      <nav class="navbar-custom navbar ">
-          <ul class="nav navbar-nav">
-            <li class="nav-item active">
-              <a href="#" class="nav-link text-center">単語の探索</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">ピックリスト</a>
-            </li>
-            <li  class="nav-item">
-              <a href="#" class="nav-link text-center">ブックマーク</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">アクション歴史</a>
-            </li>
-          </ul>
-        </nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 250px">
+      <div class="ms-4">
+        <a href="signup.php" class="btn custom-btn custom-border-btn smoothscroll">サインアップ</a>
+      </div>
+      <div class="ms-4">
+        <a href="signin.php" class="btn custom-btn custom-border-btn smoothscroll">サインイン</a>
+      </div>
     </div>
   </div>
-      
-  <div class="header-right">
-  <div class="dropdown">
-    <button class="btn-dd" type="button" data-toggle="dropdown">ユーザー名
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="#">
-          <img src="./images/header/avatar-icon.png" alt="avatar-icon">
-          プロフィール
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="./images/header/signout-icon.png" alt="signout-icon">
-          サインアウト
-        </a>
-      </li>
-    </ul>
-  </div>
-  </div>
-</header>
-
-<script>
-  $(document).ready(function(){
-    $('.nav-item').click(function(){
-      $('.nav-item').removeClass('active');
-      $(this).addClass('active');
-    });
-  });
-</script>
+</nav>
