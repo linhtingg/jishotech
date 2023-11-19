@@ -48,76 +48,115 @@ error_reporting(0);
 <body>
 	<?php include_once('includes/header.php'); ?>
 	
-	
+	<!-- Content -->
 	<div class="new" style="padding: 50px 100px" >
+		<!-- Frame -->
 		<div class="abc" style="min-height: 750px;">
-		<form class="search-container" method="post">
-			<label for="exampleInputUsername1">Search By Registration Number</label>
-			<input type="text" class="search-box" id="searchInput" name="searchInput" placeholder="語量">
-			<span class="search-icon" name="search">
-				<button type="submit" name="search" class="btn btn-info btn-min-width mr-1 mb-1">
-					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
-						<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</button>
-			</span>
-		</form>
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-			
-	  
-			<?php
-		if(isset($_POST['search']))
-		{ 
-			$sdata=$_POST['searchInput'];
-			?>
+			<!-- Input search form -->
+			<form class="search-container" method="get">
+				<label for="exampleInputUsername1">Enter word:</label>
+				<input type="text" class="search-box" id="searchInput" name="searchInput" placeholder="語量">
+				<span class="search-icon" name="search">
+					<!-- BUTTON SEARCH -->
+					<button type="submit" name="search" class="btn btn-info btn-min-width mr-1 mb-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+					<!-- END BUTTON SEARCH -->
+				</span>
+			</form>
+			<!-- END Input search form -->
 
-					<?php
-						$query=mysqli_query($con,"select * from words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%'OR meaning LIKE '%$sdata%'");
-						$num=mysqli_num_rows($query);
-						if($num>0){
-							$cnt=1;
-							while($row=mysqli_fetch_array($query))
-							{
-								?> 
-								<div class="col " >
-									<div class="card h-100">
-										<div class="card-body">
-											<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
-											<p class="card-text"><?php echo htmlentities($row['hiragana']);?> </p>
-											<p class="card-text"><?php echo htmlentities($row['katakana']);?> </p>
-											<br>
-											<h6 class="card-subtitle mb-2 text-muted"><?php echo htmlentities($row['meaning']);?> </h6>
-											<p class="card-text"><?php echo htmlentities($row['romaji']);?>   </p>
-											<p class="card-text"><?php echo htmlentities($row['example']);?>  </p>
-											<p class="card-text"><?php echo htmlentities($row['status']);?>   </p>
-											<p class="card-text"><?php echo htmlentities($row['link']);?>     </p>
-										</div> 
-									</div>
+			<!-- result after query from input form -->
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<?php
+				$results_per_page = 12; // Number of results per page
+
+				if (isset($_GET['page'])) {
+					$page = $_GET['page'];
+				} else {
+					$page = 1;
+				}
+
+				$start_from = ($page - 1) * $results_per_page;
+				// echo '<div> '$start_from'<div>';
+
+				if (isset($_GET['search'])) {
+					$sdata = $_GET['searchInput'];
+
+					// Count total number of rows
+					$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
+					$count_data = mysqli_fetch_assoc($count_query);
+					$total_pages = ceil($count_data['total'] / $results_per_page);
+
+					// Fetch data with pagination
+					$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' LIMIT $start_from, $results_per_page");
+					$num = mysqli_num_rows($query);
+
+					if ($num > 0) {
+						$cnt = 1;
+						while ($row = mysqli_fetch_array($query)) {
+							?> 
+							<div class="col " >
+								<div class="card h-100">
+									<div class="card-body">
+										<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
+										<p class="card-text"><?php echo htmlentities($row['hiragana']);?> </p>
+										<p class="card-text"><?php echo htmlentities($row['katakana']);?> </p>
+										<br>
+										<h6 class="card-subtitle mb-2 text-muted"><?php echo htmlentities($row['meaning']);?> </h6>
+										<p class="card-text"><?php echo htmlentities($row['romaji']);?>   </p>
+										<p class="card-text"><?php echo htmlentities($row['example']);?>  </p>
+										<p class="card-text"><?php echo htmlentities($row['status']);?>   </p>
+										<p class="card-text"><?php echo htmlentities($row['link']);?>     </p>
+									</div> 
 								</div>
-								<?php 
-								$cnt=$cnt+1;
-							} 
-						} 
-						else { 
-							?>
-									<tr>
-										<td colspan="8"> No record found against this search</td>
-										
-									</tr>
-									
-									<?php 
-						} 
+							</div>
+							<?php
+							$cnt = $cnt + 1;
+						}
+					} else {
+						echo '<tr><td colspan="8"> No record found against this search</td></tr>';
 					}
-					?>                     
-	</div>
-	
 
-<div class="div-footer"> 
-	<?php include_once('includes/footer.php'); ?>
-</div>
+
+					// // Pagination links
+					// echo '<div class="pagination">';
+					// for ($i = 1; $i <= $total_pages; $i++) {
+					// 	echo '<a href="?searchInput=' . $sdata .'&search=&page=' . $i . ' "> ' . $i . '</a>';
+					// }
+					// echo '</div>';
+				}
+				?>
+			</div>
+			<!-- ENDresult after query from input form -->
+
+			<!-- pagtination  -->
+			<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+				<ul class="pagination">
+					<?php
+					for ($i = 1; $i <= $total_pages; $i++) {
+						echo '<li class="page-item"> <a class="page-link" href="?searchInput=' . $sdata . '&search=&page=' . $i . ' "> ' . $i . '</a></li>';
+					}
+					?>
+				</ul>
+			</nav>
+			<!-- END pagtination  -->
+		</div>
+		<!-- END Frame -->
+	</div>
+	<!-- END Content -->
+
+
+
+	<!-- Footer -->
+	<div class="div-footer" > 
+		<?php include_once('includes/footer.php'); ?>
+	</div>
 </body>
 
 </html>
