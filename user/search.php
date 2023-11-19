@@ -125,7 +125,7 @@ error_reporting(0);
 								// Hiển thị kết quả tìm kiếm
 								?>
 								<div class="col">
-									<div class="card h-100">
+									<div class="card h-100 card-custom">
 										<div class="card-body">
 											<!-- ... (các nội dung thẻ card) ... -->
 											<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
@@ -148,9 +148,9 @@ error_reporting(0);
 
 							// Hiển thị phân trang
 							?>
-							<div class="pagination d-flex justify-content-center">
+							<div class="mt-5 d-flex justify-content-center">
 								<nav aria-label="Page navigation example" class="custom-centered-nav">
-									<ul class="pagination">
+									<ul class="pagination pagination-custom">
 										<?php if ($page > 1): ?>
 										<li class="prev"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-1 ?>">Prev</a></li>
 										<?php endif; ?>
@@ -181,7 +181,7 @@ error_reporting(0);
 							</div>
 							<?php
 						} else {
-							echo '<tr><td colspan="8"> No record found against this search</td></tr>';
+							echo '<div class="container text-center no-result"> 検索結果なし</div>';
 						}
 					}
 					?>
