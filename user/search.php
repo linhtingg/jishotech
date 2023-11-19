@@ -71,10 +71,9 @@ error_reporting(0);
 			<!-- END Input search form -->
 
 			<!-- result after query from input form -->
-			<div style="min-height: 450px;">
-				<div class="row row-cols-1 row-cols-md-4 g-4">
-					<?php
-					$results_per_page = 12; // Number of results per page
+			<!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
+			<?php
+				$results_per_page = 12; // Number of results per page
 
 					if (isset($_GET['page'])) {
 						$page = $_GET['page'];
@@ -82,12 +81,17 @@ error_reporting(0);
 						$page = 1;
 					}
 
-					$start_from = ($page - 1) * $results_per_page;
-					// echo '<div> '$start_from'<div>';
+				$start_from = ($page - 1) * $results_per_page;
 
-					if (isset($_GET['search'])) {
+				if (isset($_GET['search'])) {
+					// Tìm kiếm được kích hoạt, thực hiện truy vấn tìm kiếm
+					if (isset($_GET['searchInput'])) {
 						$sdata = $_GET['searchInput'];
 
+						// Count total number of rows
+						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
+						$count_data = mysqli_fetch_assoc($count_query);
+						$total_pages = ceil($count_data['total'] / $results_per_page);
 						// Count total number of rows
 						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
 						$count_data = mysqli_fetch_assoc($count_query);
@@ -95,15 +99,35 @@ error_reporting(0);
 
 						// Fetch data with pagination
 						$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' LIMIT $start_from, $results_per_page");
+					} else {
+						// Trường hợp không có từ khóa tìm kiếm cụ thể, không thay đổi total_pages và query
+						$query = null;
+						$total_pages = 1;
+					}
+				} else {
+					// Truy vấn khi truy cập trang lần đầu tiên hoặc không thực hiện tìm kiếm
+					$query = mysqli_query($con, "SELECT * FROM words LIMIT $start_from, $results_per_page");
+					$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words");
+					$count_data = mysqli_fetch_assoc($count_query);
+					$total_pages = ceil($count_data['total'] / $results_per_page);
+				}
+				?>
+
+				<!-- Hiển thị kết quả -->
+				<div class="row row-cols-1 row-cols-md-4 g-4">
+					<?php
+					if ($query !== null) { // Kiểm tra xem có truy vấn không
 						$num = mysqli_num_rows($query);
 
 						if ($num > 0) {
 							$cnt = 1;
 							while ($row = mysqli_fetch_array($query)) {
-								?> 
-								<div class="col" >
-									<div class="card h-100 card-custom">
+								// Hiển thị kết quả tìm kiếm
+								?>
+								<div class="col">
+									<div class="card h-100">
 										<div class="card-body">
+											<!-- ... (các nội dung thẻ card) ... -->
 											<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
 											<p class="card-text"><?php echo htmlentities($row['hiragana']);?> </p>
 											<p class="card-text"><?php echo htmlentities($row['katakana']);?> </p>
@@ -119,37 +143,54 @@ error_reporting(0);
 								<?php
 								$cnt = $cnt + 1;
 							}
+							echo '</div>';
+							echo '</div>';
+
+							// Hiển thị phân trang
+							?>
+							<div class="pagination d-flex justify-content-center">
+								<nav aria-label="Page navigation example" class="custom-centered-nav">
+									<ul class="pagination">
+										<?php if ($page > 1): ?>
+										<li class="prev"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-1 ?>">Prev</a></li>
+										<?php endif; ?>
+										
+										<?php if ($page > 3): ?>
+										<li class="start"><a href="?searchInput=<?php echo $sdata ?>&search=&page=1">1</a></li>
+										<li class="page"><a>...</a></li>
+										<?php endif; ?>
+										
+										<?php if ($page-2 > 0): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a></li><?php endif; ?>
+										<?php if ($page-1 > 0): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a></li><?php endif; ?>
+										
+										<li class="currentpage"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page ?>"><b><?php echo $page ?></b></a></li>
+										
+										<?php if ($page+1 < $total_pages+1): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a></li><?php endif; ?>
+										<?php if ($page+2 < $total_pages+1): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a></li><?php endif; ?>
+										
+										<?php if ($page < $total_pages-2): ?>
+											<li class="page"><a>...</a></li>
+											<li class="end"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $total_pages ?>"><?php echo $total_pages ?></a></li>
+										<?php endif; ?>
+										
+										<?php if ($page < $total_pages): ?>
+										<li class="next"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+1 ?>">Next</a></li>
+										<?php endif; ?>
+									</ul>
+								</nav>
+							</div>
+							<?php
 						} else {
 							echo '<tr><td colspan="8"> No record found against this search</td></tr>';
 						}
-
-
-						// // Pagination links
-						// echo '<div class="pagination">';
-						// for ($i = 1; $i <= $total_pages; $i++) {
-						// 	echo '<a href="?searchInput=' . $sdata .'&search=&page=' . $i . ' "> ' . $i . '</a>';
-						// }
-						// echo '</div>';
 					}
 					?>
 				</div>
+
+							
 			</div>
-			
 			<!-- ENDresult after query from input form -->
 
-			<!-- pagtination  -->
-
-			<div class="search-pag">
-				<nav aria-label="Page navigation example" class="d-flex justify-content-center">
-					<ul class="pagination pagination-custom">
-						<?php
-						for ($i = 1; $i <= $total_pages; $i++) {
-							echo '<li class="page-item"> <a class="page-link" href="?searchInput=' . $sdata . '&search=&page=' . $i . ' "> ' . $i . '</a></li>';
-						}
-						?>
-					</ul>
-				</nav>
-			</div>
 			<!-- END pagtination  -->
 	</div>
 	<!-- END Content -->
