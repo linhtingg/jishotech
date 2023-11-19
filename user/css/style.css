@@ -59,7 +59,7 @@ body{
 	color: #fff;
 	text-decoration: none;
 }
-/* 
+
 .navbar-custom .nav-link {
 	color: #fff;
 	font-size: 18px;
@@ -89,7 +89,7 @@ body{
 .nav-item {
 	display: flex;
 	margin-right: 15px;
-} */
+}
 
 .btn-dd {
 	background-color: transparent;
@@ -308,7 +308,6 @@ tr:nth-child(odd) {
 	border: none;
 	padding: 10px;
 	transition: all 0.2s ease-out; 
-	
 }
 
 .card-custom:hover {
@@ -326,13 +325,27 @@ tr:nth-child(odd) {
 	font-size: 16px;
 }
 
-.search-pag {
-	margin-top: 50px;
-}
-.pagination-custom li{
-	margin: 0 4px;
+.pagination li a,
+.pagination .prev a,
+.pagination .next a {
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.25);
 	color: var(--primary-color);
+	font-size: 16px;
+	padding: 10px 12px;
+	transition: all 0.2s ease-out;
+}
 
+.pagination li a:hover,
+.pagination .prev a:hover,
+.pagination .next a:hover {
+	background-color: var(--bg-blue);
+}
+
+.pagination .currentpage a {
+	border: none;
+	background-color: var(--primary-color);
+	color: #fff;
 }
 
 /* ========================================= */
