@@ -8,6 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	--primary-color: #1677FF;
 	--text-hint: #9FA7BE;
 	--bg-red: #FF1616;
+	--bg-blue: rgba(22, 143, 255, 0.10);
 }
 body{
   background: #fff;
@@ -20,6 +21,7 @@ body{
 .header {
 	background: url(../images/header/header_background.png) no-repeat;
 	height: 100px;
+	padding: 0 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -41,7 +43,7 @@ body{
 	color: #fff;
 	font-size: 24px;
 	font-weight: 700;
-	margin-right: 20px;
+	margin-right: 40px;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
@@ -57,9 +59,7 @@ body{
 	color: #fff;
 	text-decoration: none;
 }
-nav {
-	padding-top: 20px;
-}
+
 .navbar-custom .nav-link {
 	color: #fff;
 	font-size: 18px;
@@ -89,7 +89,6 @@ nav {
 .nav-item {
 	display: flex;
 	margin-right: 15px;
-	width: 160px;
 }
 
 .btn-dd {
@@ -104,12 +103,17 @@ nav {
 
 .dropdown-menu {
 	width: 200px;
-	border: none;
+	border: 1px solid rgba(0, 0, 0, 0.25);
 	color: rgba(0, 0, 0. 0.5);
 	font-size: 16px;
 	padding: 15px 0;
 
 }
+
+.dropdown-menu li {
+	margin-bottom: 8px;
+}
+
 .dropdown-menu img {
 	margin-right: 5px;
 	margin-left: 5px;
@@ -146,7 +150,7 @@ nav {
 	overflow-y: auto;
 }
 
-.list-group-custom a.list-group-item {
+.list-group-custom button.list-group-item {
 	background-color: transparent;
 	border-radius: 20px;
 	border-color: transparent;
@@ -155,6 +159,7 @@ nav {
 	font-weight: 500;
 	margin-bottom: 10px;
 	transition: all 0.4s ease;
+	margin-right: 10px;
 }
 
 .list-group-custom::-webkit-scrollbar {
@@ -174,16 +179,16 @@ nav {
 	background-color: #0056b3;
   }
 
-.list-group-custom a.list-group-item:hover,
-.list-group-custom a.list-group-item:active,
-.list-group-custom a.list-group-item.active {
+.list-group-custom button.list-group-item:hover,
+.list-group-custom button.list-group-item:active,
+.list-group-custom button.list-group-item.active {
 	background-color: #fff;
 	color: var(--primary-color);
 	border-radius: 20px;
 	border: none;
 }
 
-.list-group-custom a.list-group-item.active {
+.list-group-custom button.list-group-item.active {
 	font-weight: bold;
 }
 
@@ -194,9 +199,8 @@ nav {
 	max-width: 1200px;
 	margin: 0 auto;
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 60px;
 }
-
 .search-box {
 	width: calc(100% - 40px);
 	padding: 10px;
@@ -205,6 +209,7 @@ nav {
 	height: 50px;
 	border-radius: 20px;
 	border: 1px solid #807171;
+	position: relative;
 }
 
 .search-icon {
@@ -215,6 +220,54 @@ nav {
 	cursor: pointer;
 }
 
+.search-container button.search-btn {
+	background-color: transparent;
+	border: none;
+}
+
+
+/* ================ CONTENT ============ */
+.content {
+	padding: 50px 80px 20px;
+	min-height: 600px;
+}
+
+/* ============== SEARCH PAGE ============ */
+
+.card-custom {
+	background-color: var(--bg-blue);
+	border-radius: 20px;
+	border: none;
+	padding: 10px;
+	transition: all 0.2s ease-out; 
+	
+}
+
+.card-custom:hover {
+	box-shadow: 0 0 10px 1px rgba(0, 4, 4, 0.15);
+}
+
+.card-custom .card-title {
+	font-size: 30px;
+	color: #1677FF;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.card-custom .card-text {
+	font-size: 16px;
+}
+
+.search-pag {
+	margin-top: 50px;
+}
+.pagination-custom li{
+	margin: 0 4px;
+	color: var(--primary-color);
+
+}
+
+/* ========================================= */
 /* ================FOOTER============= */
 .footer {
 	background: url(../images/footer/footer_background.png);

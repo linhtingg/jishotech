@@ -6,16 +6,16 @@
         <span class="title-text">トピックリスト</span>
     </div>
     <div class="list-group list-group-custom">
-        <a href="#" class="list-group-item active">全ての単語</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
+        <button href="#" class="list-group-item active">全ての単語</button>
+        <button href="#" class="list-group-item">コンプーター</button>
+        <button href="#" class="list-group-item">ネットワーク</button>
+        <button href="#" class="list-group-item">プログラミング</button>
+        <button href="#" class="list-group-item">コンプーター</button>
+        <button href="#" class="list-group-item">ネットワーク</button>
+        <button href="#" class="list-group-item">プログラミング</button>
+        <button href="#" class="list-group-item">コンプーター</button>
+        <button href="#" class="list-group-item">ネットワーク</button>
+        <button href="#" class="list-group-item">プログラミング</button>
 
   </div>
 </div>
