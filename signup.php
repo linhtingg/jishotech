@@ -10,7 +10,7 @@ if (isset($_POST['signup'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
-    $ret = mysqli_query($con, "INSERT INTO user (username,email,password) VALUES ('$username','$email','$pass');");
+    $ret = mysqli_query($con, "INSERT INTO users (username,email,password) VALUES ('$username','$email','$pass');");
     
     if (mysqli_affected_rows($con)) {
         $_SESSION['uname'] = $_POST['username'];
