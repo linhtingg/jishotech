@@ -67,6 +67,12 @@ nav {
 	transition: all 0.4s ease ;
 }
 
+.nav-pagtination {
+    display: flex;
+    justify-content: center;
+}
+
+
 .navbar-custom .nav-item.active a {
 	color: var(--primary-color);
 	background-color: #fff;
