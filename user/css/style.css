@@ -197,7 +197,7 @@ tr:nth-child(odd) {
 	padding-top: 30px;
 	height: 500px;
 	border-radius: 15px;
-	width: 290px;
+	/* width: 300px; */
 }
 
 .title {
@@ -316,7 +316,7 @@ tr:nth-child(odd) {
 
 .card-custom .card-title {
 	font-size: 30px;
-	color: #1677FF;
+	color: var(--primary-color);
 	font-weight: 500;
 	margin-bottom: 10px;
 }
@@ -349,6 +349,36 @@ tr:nth-child(odd) {
 }
 
 /* ========================================= */
+
+/* ============ TOPIC ================== */
+.topic-btn-gr {
+	margin-bottom: 20px;
+}
+.topic-btn-gr button {
+	border-radius: 18px;
+	margin-left: 20px;
+	padding: 5px 20px;
+}
+
+.word-card-custom {
+	background-color: var(--bg-blue);
+	border: none;
+	border-radius: 20px;
+}
+
+.word-card-custom .card-title {
+	font-size: 30px;
+	color: #000;
+}
+
+.word-card-custom .card-text {
+	color: var(--text-hint);
+}
+
+.word-card-custom .card-subtitle {
+	color: var(--primary-color);
+}
+
 /* ================FOOTER============= */
 .footer {
 	background: url(../images/footer/footer_background.png);
