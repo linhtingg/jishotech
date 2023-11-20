@@ -14,8 +14,9 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 
 <head>
     <title>JishoTech || Topic Page</title>
-    
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Custom Theme files -->
     <link href="css/style.css" rel='stylesheet' type='text/css' />
     <!--Custom Theme files-->
@@ -51,13 +52,15 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
     });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 
-</head> 
+</head>
 
 <body>
     <!-- Header -->
@@ -66,15 +69,19 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
     <div class="content">
         <!-- Search bar -->
         <form class="search-container">
-        <input type="text" class="search-box" id="searchInput" name="q" placeholder="語量">
-        <span class="search-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
-                <circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </span>
+            <input type="text" class="search-box" id="searchInput" name="q" placeholder="語量" >
+            <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
+                    <circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
         </form>
 
         <!--  -->
@@ -84,20 +91,21 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                 <div class="topiclist">
                     <div class="title">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 32 29" fill="none">
-                        <path
-                            d="M1.74411 16.0556H12.2088C13.168 16.0556 13.9529 15.3556 13.9529 14.5V2.05556C13.9529 1.2 13.168 0.5 12.2088 0.5H1.74411C0.784848 0.5 0 1.2 0 2.05556V14.5C0 15.3556 0.784848 16.0556 1.74411 16.0556ZM1.74411 28.5H12.2088C13.168 28.5 13.9529 27.8 13.9529 26.9444V20.7222C13.9529 19.8667 13.168 19.1667 12.2088 19.1667H1.74411C0.784848 19.1667 0 19.8667 0 20.7222V26.9444C0 27.8 0.784848 28.5 1.74411 28.5ZM19.1852 28.5H29.6498C30.6091 28.5 31.3939 27.8 31.3939 26.9444V14.5C31.3939 13.6444 30.6091 12.9444 29.6498 12.9444H19.1852C18.2259 12.9444 17.4411 13.6444 17.4411 14.5V26.9444C17.4411 27.8 18.2259 28.5 19.1852 28.5ZM17.4411 2.05556V8.27778C17.4411 9.13333 18.2259 9.83333 19.1852 9.83333H29.6498C30.6091 9.83333 31.3939 9.13333 31.3939 8.27778V2.05556C31.3939 1.2 30.6091 0.5 29.6498 0.5H19.1852C18.2259 0.5 17.4411 1.2 17.4411 2.05556Z"
-                            fill="white" />
+                            <path
+                                d="M1.74411 16.0556H12.2088C13.168 16.0556 13.9529 15.3556 13.9529 14.5V2.05556C13.9529 1.2 13.168 0.5 12.2088 0.5H1.74411C0.784848 0.5 0 1.2 0 2.05556V14.5C0 15.3556 0.784848 16.0556 1.74411 16.0556ZM1.74411 28.5H12.2088C13.168 28.5 13.9529 27.8 13.9529 26.9444V20.7222C13.9529 19.8667 13.168 19.1667 12.2088 19.1667H1.74411C0.784848 19.1667 0 19.8667 0 20.7222V26.9444C0 27.8 0.784848 28.5 1.74411 28.5ZM19.1852 28.5H29.6498C30.6091 28.5 31.3939 27.8 31.3939 26.9444V14.5C31.3939 13.6444 30.6091 12.9444 29.6498 12.9444H19.1852C18.2259 12.9444 17.4411 13.6444 17.4411 14.5V26.9444C17.4411 27.8 18.2259 28.5 19.1852 28.5ZM17.4411 2.05556V8.27778C17.4411 9.13333 18.2259 9.83333 19.1852 9.83333H29.6498C30.6091 9.83333 31.3939 9.13333 31.3939 8.27778V2.05556C31.3939 1.2 30.6091 0.5 29.6498 0.5H19.1852C18.2259 0.5 17.4411 1.2 17.4411 2.05556Z"
+                                fill="white" />
                         </svg>
                         <span class="title-text">トピックリスト</span>
                     </div>
                     <div class="list-group list-group-custom">
-                        <button type="button" onClick="showAll()" class="list-group-item active">全ての単語</button>
+                        <a href="topic.php?topic=0" class="list-group-item active">全ての単語</a>
                         <?php
-                            foreach ($topics as $topic) {
-                                echo "<button type=\"button\" class=\"list-group-item\" onclick=\"showTopic({$topic['id_topic']})\"  >{$topic['topic_name']}</button>";
-                            }
-                            ?>
+    foreach ($topics as $topic) {
+        echo "<a class=\"list-group-item\" href=\"?topic={$topic['id_topic']}\">{$topic['topic_name']}</a>";
+    }
+    ?>
                     </div>
+
                 </div>
             </div>
             <div class="col col-9">
@@ -109,65 +117,76 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                 <div id="">
                     <div class="row row-cols-1 row-cols-md-3">
                         <?php
-                            $wordQuery = $conn->query("SELECT * FROM Words");
-                            $words = $wordQuery->fetch_all(MYSQLI_ASSOC);
-
-                            $perPage = 9;
-                            $totalPages = ceil(count($words) / $perPage);
-                            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                            $start = ($currentPage - 1) * $perPage;
-                            $pagedWords = array_slice($words, $start, $perPage);
-
+                          $currentTopic = isset($_GET['topic']) ? (int)$_GET['topic'] : 0;
+                          $searchTerm = isset($_GET['q']) ? $_GET['q'] : null;
+                          $query = "SELECT * FROM words";
+                          if ($currentTopic != 0) {
+                              $query .= " WHERE id_word IN (SELECT id_word FROM wordtopic WHERE id_topic = {$currentTopic})";
+                          }
+                          
+                          if ($searchTerm !== null) {
+                              if ($currentTopic != 0) {
+                                  $query .= " AND (kanji LIKE '%$searchTerm%' OR hiragana LIKE '%$searchTerm%' OR meaning LIKE '%$searchTerm%')";
+                              } else {
+                                  $query .= " WHERE (kanji LIKE '%$searchTerm%' OR hiragana LIKE '%$searchTerm%' OR meaning LIKE '%$searchTerm%')";
+                              }
+                          }
+                          
+                          $wordQuery = $conn->query($query);
+                          $words = $wordQuery->fetch_all(MYSQLI_ASSOC);
+                          
+                          $perPage = 9;
+                          $totalPages = ceil(count($words) / $perPage);
+                          $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                          $start = ($currentPage - 1) * $perPage;
+                          $pagedWords = array_slice($words, $start, $perPage);
+                          
                             foreach ($pagedWords as $word) {
-                                
-                                $wordTopicQuery = $conn->query("SELECT id_topic FROM WordTopic WHERE id_word = {$word['id_word']}");
-                                $wordTopics = $wordTopicQuery->fetch_all(MYSQLI_ASSOC);
-                                $dataTopics = implode(' ', array_column($wordTopics, 'id_topic'));
                                 ?>
-                                <div class="col mb-4 word-card" data-topic="<?= $dataTopics ?>">
-                                    <div class="card h-100 word-card-custom">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?= $word['kanji'] ?></h5>
-                                            <p class="card-text"><?= $word['hiragana'] ?></p>
-                                            <p class="card-text"><?= $word['katakana'] ?></p>
-                                            <p class="card-subtitle mt-2"><?= $word['meaning'] ?></p>
-                                        </div>
-                                    </div>
+                        <div class="col mb-4 word-card">
+                            <div class="card h-100 word-card-custom">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $word['kanji'] ?></h5>
+                                    <p class="card-text"><?= $word['hiragana'] ?></p>
+                                    <p class="card-text"><?= $word['katakana'] ?></p>
+                                    <p class="card-subtitle mt-2"><?= $word['meaning'] ?></p>
                                 </div>
+                            </div>
+                        </div>
 
-                               <?php 
+                        <?php 
                             }
                         ?>
                     </div>
 
                     <div class="mt-5 d-flex justify-content-center">
-        <nav aria-label="Page navigation example" class="custom-centered-nav">
-            <ul class="pagination pagination-custom">
-                <?php
+                        <nav aria-label="Page navigation example" class="custom-centered-nav">
+                            <ul class="pagination pagination-custom">
+                                <?php
                 $numLinks = 4; 
                 $startPage = max(1, $currentPage - floor($numLinks / 2));
                 $endPage = min($totalPages, $startPage + $numLinks - 1);
 
                 if ($currentPage > 1) {
-                    echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">Prev</a></li>';
+                    echo '<li class="page-item"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . ($currentPage - 1) . '&q=' . ($searchTerm) . '">Prev</a></li>';
                 }
 
                 for ($i = $startPage; $i <= $endPage; $i++) {
-                    echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                    echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . $i . '&q=' . ($searchTerm) . '">' . $i . '</a></li>';
                 }
 
                 if ($currentPage < $totalPages) {
-                    echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">Next</a></li>';
+                    echo '<li class="page-item"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . ($currentPage + 1) . '&q=' . ($searchTerm) .'">Next</a></li>';
                 }
                 ?>
-            </ul>
-        </nav>
-    </div>
+                            </ul>
+                        </nav>
+                    </div>
 
-                    
+
                 </div>
 
-                
+
             </div>
         </div>
     </div>
@@ -176,21 +195,14 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
     <?php include_once('includes/footer.php');?>
 
     <script>
-        function showAll() {
-            document.querySelectorAll('.word-card').forEach(card => card.style.display = 'block');
-        }
 
-        function showTopic(topicId) {
-            document.querySelectorAll('.word-card').forEach(card => card.style.display = 'none');
-            document.querySelectorAll(`.word-card[data-topic~="${topicId}"]`).forEach(card => card.style.display = 'block');
-        }
-
-        $(document).ready(function() {
-            $('.list-group-item').click(function() {
-                $('.list-group-item').removeClass('active');
-                $(this).addClass('active');
-            });
+    $(document).ready(function() {
+        $('.list-group-item').click(function() {
+            $('.list-group-item').removeClass('active');
+            $(this).addClass('active');
         });
+    });
     </script>
 </body>
+
 </html>
