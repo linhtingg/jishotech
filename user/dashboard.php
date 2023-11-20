@@ -53,7 +53,16 @@ error_reporting(0);
 	<?php include_once('includes/header.php'); ?>
 	<div class="content">
 		<?php include_once('includes/search.php'); ?>
-		<?php include_once('includes/topiclist.php'); ?>
+		<div class="row">
+			<div class="col col-3">
+				<?php include_once('includes/topiclist.php'); ?>
+			</div>
+
+			<div class="col col-9">
+				Content
+			</div>
+		</div>
+		
 	</div>
 
 
