@@ -125,7 +125,7 @@ error_reporting(0);
 								// Hiển thị kết quả tìm kiếm
 								?>
 								<div class="col">
-									<div class="card h-100 card-custom">
+									<a class="card h-100 card-custom" href="detail.php?wordid=<?php echo htmlentities($row['id_word']); ?>" style="text-decoration: none;">
 										<div class="card-body">
 											<!-- ... (các nội dung thẻ card) ... -->
 											<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
@@ -138,7 +138,7 @@ error_reporting(0);
 											<p class="card-text"><?php echo htmlentities($row['status']);?>   </p>
 											<p class="card-text"><?php echo htmlentities($row['link']);?>     </p>
 										</div> 
-									</div>
+									</a>
 								</div>
 								<?php
 								$cnt = $cnt + 1;
