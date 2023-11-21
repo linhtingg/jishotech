@@ -10,7 +10,7 @@ if (isset($_POST['signin'])) {
     if ($num > 0) {
         $_SESSION['uname'] = $_POST['uname'];
         $_SESSION['uid'] = $num['ID'];
-        header("location:user/dashboard.php");
+        header("location:user/search.php");
     } else {
         echo "<script>alert('Invalid username or password');</script>";
     }

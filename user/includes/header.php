@@ -2,7 +2,7 @@
 <header class="header container-fluid">
   <div class="header-left">
     <div class="logo text-center">
-    <a href="#" class="logo__link">JishoTech</a>
+    <a href="../index.php" class="logo__link">JishoTech</a>
     </div>
 
     <div class="header-navbar">
@@ -11,7 +11,7 @@
               <a href="#" class="nav-link text-center">単語の探索</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-center">ピックリスト</a>
+              <a href="topic.php" class="nav-link text-center">トピックリスト</a>
             </li>
             <li  class="nav-item">
               <a href="#" class="nav-link text-center">ブックマーク</a>
