@@ -2,11 +2,16 @@
 include('includes/config.php');
 session_start();
 error_reporting(0);
-if (isset($_GET['wordid'])) {
-	$id_word = $_GET['wordid'];
-    $ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
-    $row = mysqli_fetch_array($ret);
-}
+
+if (strlen($_SESSION['uid']== 0)) {
+	header('location: ../signin.php');
+} 
+else {
+	if (isset($_GET['wordid'])) {
+		$id_word = $_GET['wordid'];
+		$ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
+		$row = mysqli_fetch_array($ret);
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -118,3 +123,4 @@ if (isset($_GET['wordid'])) {
 </body>
 
 </html>
+<?php } ?>
