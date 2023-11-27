@@ -83,11 +83,10 @@ include('includes/config.php');
 							while ($row=mysqli_fetch_array($ret)) {
                             ?>
 								<div class="owl-carousel-info-wrap item">
-									<img src="images/topics/1.png" class="owl-carousel-image img-fluid" alt="">
+									<img src="images/topics/<?php echo htmlentities($row['id_topic']);?>.png" class="owl-carousel-image img-fluid" alt="">
 									<div class="owl-carousel-info">
 										<h5 class="mb-2">
-											<?php # echo htmlentities($result->username)?>
-											Topic's name
+											<?php echo htmlentities($row['topic_name']);?>
 											<img src="images/verified.png" class="owl-carousel-verified-image img-fluid" alt="">
 										</h5>
 										<span class="badge">流行</span>
