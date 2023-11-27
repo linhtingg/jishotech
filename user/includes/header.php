@@ -36,7 +36,7 @@
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="signout.php">
             <img src="./images/header/signout-icon.png" alt="signout-icon">
             サインアウト
           </a>

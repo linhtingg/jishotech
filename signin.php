@@ -9,8 +9,8 @@ if (isset($_POST['signin'])) {
     $num = mysqli_fetch_array($ret);
     if ($num > 0) {
         $_SESSION['uname'] = $_POST['uname'];
-        $_SESSION['uid'] = $num['ID'];
-        header("location:user/search.php");
+        $_SESSION['uid'] = $num['id_user'];
+        header("location: user/search.php");
     } else {
         echo "<script>alert('Invalid username or password');</script>";
     }

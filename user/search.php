@@ -3,6 +3,10 @@ include('includes/config.php');
 session_start();
 error_reporting(0);
 
+if (strlen($_SESSION['uid']== 0)) {
+	header('location: ../signin.php');
+} 
+else {
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -202,3 +206,4 @@ error_reporting(0);
 </body>
 
 </html>
+<?php } ?>
