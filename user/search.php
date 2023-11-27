@@ -92,17 +92,19 @@ else {
 					if (isset($_GET['searchInput'])) {
 						$sdata = $_GET['searchInput'];
 
+						// // Count total number of rows
+						// $count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
+						// $count_data = mysqli_fetch_assoc($count_query);
+						// $total_pages = ceil($count_data['total'] / $results_per_page);
 						// Count total number of rows
-						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
-						$count_data = mysqli_fetch_assoc($count_query);
-						$total_pages = ceil($count_data['total'] / $results_per_page);
-						// Count total number of rows
-						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
-						$count_data = mysqli_fetch_assoc($count_query);
-						$total_pages = ceil($count_data['total'] / $results_per_page);
+						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC");
 
+						$count_data = mysqli_fetch_assoc($count_query);
+						$number_of_result = $count_data['total'];
+						$total_pages = ceil($number_of_result / $results_per_page);
+						
 						// Fetch data with pagination
-						$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' LIMIT $start_from, $results_per_page");
+						$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
 					} else {
 						// Trường hợp không có từ khóa tìm kiếm cụ thể, không thay đổi total_pages và query
 						$query = null;
@@ -113,10 +115,12 @@ else {
 					$query = mysqli_query($con, "SELECT * FROM words LIMIT $start_from, $results_per_page");
 					$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words");
 					$count_data = mysqli_fetch_assoc($count_query);
-					$total_pages = ceil($count_data['total'] / $results_per_page);
+					$number_of_result = $count_data['total'];
+					$total_pages = ceil($number_of_result / $results_per_page);
 				}
 				?>
-
+				<!-- Hiển thị số kết quả tìm thaasy -->
+				<div> <?php echo $number_of_result ?> 枚のカードが見つかりました  </div>
 				<!-- Hiển thị kết quả -->
 				<div class="row row-cols-1 row-cols-md-4 g-4">
 					<?php
