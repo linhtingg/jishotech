@@ -63,7 +63,52 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 
 <body>
     <!-- Header -->
-    <?php include_once('includes/header.php');?>
+        <header class="header container-fluid">
+    <div class="header-left">
+        <div class="logo text-center">
+        <a href="../index.php" class="logo__link">JishoTech</a>
+        </div>
+
+        <div class="header-navbar">
+            <ul class="nav nav-pills navbar-custom">
+                <li class="nav-item">
+                <a href="search.php" class="nav-link text-center">単語の探索</a>
+                </li>
+                <li class="nav-item active">
+                <a href="topic.php" class="nav-link text-center">トピックリスト</a>
+                </li>
+                <li  class="nav-item">
+                <a href="#" class="nav-link text-center">ブックマーク</a>
+                </li>
+                <li class="nav-item">
+                <a href="#" class="nav-link text-center">アクション歴史</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+        
+    <div class="header-right">
+        <div class="dropdown">
+        <button class="btn-dd dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            ユーザー名
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="dropdown-item" href="#">
+                <img src="./images/header/avatar-icon.png" alt="avatar-icon">
+                プロフィール
+            </a>
+            </li>
+            <li>
+            <a class="dropdown-item" href="signout.php">
+                <img src="./images/header/signout-icon.png" alt="signout-icon">
+                サインアウト
+            </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </header>
 
     <div class="content">
         <!-- Search bar -->
@@ -97,22 +142,18 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                         <span class="title-text">トピックリスト</span>
                     </div>
                     <div class="list-group list-group-custom">
-                        <a href="topic.php?topic=0" class="list-group-item active">全ての単語</a>
+                        <a href="topic.php?topic=0" class="list-group-item">全ての単語</a>
                         <?php
-    foreach ($topics as $topic) {
-        echo "<a class=\"list-group-item\" href=\"?topic={$topic['id_topic']}\">{$topic['topic_name']}</a>";
-    }
-    ?>
+                    foreach ($topics as $topic) {
+                        echo "<a class=\"list-group-item\" href=\"?topic={$topic['id_topic']}\">{$topic['topic_name']}</a>";
+                    }
+                    ?>
                     </div>
 
                 </div>
             </div>
             <div class="col col-9">
-                <div class="topic-btn-gr">
-                    <button type="button" class="btn btn-dark">インポート</button>
-                    <button type="button" class="btn btn-dark">エクスポート</button>
-                    <button type="button" class="btn btn-primary">練習</button>
-                </div>
+                
                 <div id="">
                     <div class="row row-cols-1 row-cols-md-3">
                         <?php
@@ -158,7 +199,7 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                         ?>
                     </div>
 
-                    <div class="mt-5 d-flex justify-content-center">
+                    <div class="mt-3 d-flex justify-content-center">
                         <nav aria-label="Page navigation example" class="custom-centered-nav">
                             <ul class="pagination pagination-custom">
                                 <?php
@@ -182,6 +223,12 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                         </nav>
                     </div>
 
+                    <div class="topic-btn-gr">
+                    <button type="button" class="btn btn-dark">インポート</button>
+                    <button type="button" class="btn btn-dark">エクスポート</button>
+                    <button type="button" class="btn btn-primary">練習</button>
+                </div>
+
 
                 </div>
 
@@ -195,12 +242,32 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 
     <script>
 
-    $(document).ready(function() {
-        $('.list-group-item').click(function() {
-            $('.list-group-item').removeClass('active');
-            $(this).addClass('active');
-        });
+$(document).ready(function() {
+
+    var currentTopicId = getUrlParameter('topic');
+    if (currentTopicId === '' || currentTopicId === '0') {
+
+        $('a[href="topic.php?topic=0"]').addClass('active');
+    } else {
+        $('.list-group-item').removeClass('active');
+        $('a[href="?topic=' + currentTopicId + '"]').addClass('active');
+    }
+
+    $('.list-group-item').click(function(e) {
+        e.preventDefault();
+        $('.list-group-item').removeClass('active');
+        $(this).addClass('active');
+        window.location.href = $(this).attr('href');
     });
+
+    function getUrlParameter(name) {
+        name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+});
+
     </script>
 </body>
 

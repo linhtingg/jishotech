@@ -8,7 +8,7 @@
     <div class="header-navbar">
           <ul class="nav nav-pills navbar-custom">
             <li class="nav-item active">
-              <a href="#" class="nav-link text-center">単語の探索</a>
+              <a href="search.php" class="nav-link text-center">単語の探索</a>
             </li>
             <li class="nav-item">
               <a href="topic.php" class="nav-link text-center">トピックリスト</a>
