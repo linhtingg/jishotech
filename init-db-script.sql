@@ -2,6 +2,27 @@
 CREATE DATABASE IF NOT EXISTS jishotech;
 USE jishotech;
 
+-- Create User table
+CREATE TABLE users (
+    id_user INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,    
+    password VARCHAR(255) NOT NULL,
+    phone_number INT,
+    status INT NOT NULL,
+    lastlogin timestamp default current_timestamp,
+    lastlogout timestamp default current_timestamp
+);
+
+INSERT INTO `jishotech`.`users` (`id_user`, `username`, `email`, `password`, `phone_number`, `status`, `lastlogin`, `lastlogout`) VALUES 
+ (0, 'admin', 'hoanglinh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 0, '2023/11/20 9:20:00', '2023/11/20 10:20:00'),
+ (1, 'hoanglinh', 'hoanglinh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 0, '2023/11/20 9:20:00', '2023/11/20 10:20:00'),
+ (2, 'ducanh', 'ducanh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456790', 0, '2023/11/21 9:20:00', '2023/11/21 9:20:00'),
+ (3, 'vananh', 'vananh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456791', 0, '2023/11/22 21:20:00', '2023/11/22 21:20:00'),
+ (4, 'hieu', 'hieu@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456792', 0, '2023/11/23 9:20:00', '2023/11/23 9:20:00'),
+ (5, 'binh', 'binh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456793', 0, '2023/11/24 9:20:00', '2023/11/24 9:20:00'),
+ (6, 'chien', 'chien@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456794', 0, '2023/11/25 9:20:00', '2023/11/25 9:30:00');;
+
 -- Create Topics table
 CREATE TABLE topics (
     id_topic INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,7 +39,8 @@ CREATE TABLE words (
     meaning VARCHAR(255) NOT NULL,
     example VARCHAR(255),       
     status VARCHAR(255),
-    link VARCHAR(255)
+    link VARCHAR(255),
+    FOREIGN KEY (id_user) REFERENCES users(id_user),
 );
 
 -- Create WordTopic table
@@ -27,27 +49,9 @@ CREATE TABLE wordtopic (
     id_topic INT NOT NULL,
     id_word INT NOT NULL,
     FOREIGN KEY (id_topic) REFERENCES topics(id_topic),
-    FOREIGN KEY (id_word) REFERENCES words(id_word)
+    FOREIGN KEY (id_word) REFERENCES words(id_word),
 );
 
--- Create User table
-=CREATE TABLE users (
-    id_user INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,    
-    password VARCHAR(255) NOT NULL,
-    phone_number INT,
-    status INT NOT NULL,
-    lastlogin timestamp default current_timestamp,
-    lastlogout timestamp default current_timestamp
-);
-
-INSERT INTO `jishotech`.`users` (`id_user`, `username`, `email`, `password`, `phone_number`, `status`, `lastlogin`, `lastlogout`) VALUES (1, 'hoanglinh', 'hoanglinh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 0, '2023/11/20 9:20:00', '2023/11/20 10:20:00'),
- (2, 'ducanh', 'ducanh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456790', 0, '2023/11/21 9:20:00', '2023/11/21 9:20:00'),
- (3, 'vananh', 'vananh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456791', 0, '2023/11/22 21:20:00', '2023/11/22 21:20:00'),
- (4, 'hieu', 'hieu@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456792', 0, '2023/11/23 9:20:00', '2023/11/23 9:20:00'),
- (5, 'binh', 'binh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456793', 0, '2023/11/24 9:20:00', '2023/11/24 9:20:00'),
- (6, 'chien', 'chien@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456794', 0, '2023/11/25 9:20:00', '2023/11/25 9:30:00');;
 
 -- Create Bookmark table
 CREATE TABLE bookmarks (
