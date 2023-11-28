@@ -34,9 +34,9 @@ include('includes/config.php');
                     <img src="images/pod-talk-logo.png" class="logo-image img-fluid" alt="templatemo pod talk">
                 </a>
                 <!-- Search bar -->
-                <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                <form action="user/search.php" method="get" class="custom-form search-form flex-fill me-3" role="search">
                     <div class="input-group input-group-lg">
-                        <input name="search" type="search" class="form-control" id="search" placeholder="Search Podcast"
+                        <input name="search" type="search" class="form-control" id="search" placeholder="新しい語彙を調べる"
                             aria-label="Search">
                         <button type="submit" class="form-control" id="submit">
                             <i class="bi-search"></i>
@@ -72,22 +72,21 @@ include('includes/config.php');
                             <!-- Explore this week trending topic -->
                             <h6 class="text-white">最新の流行トピックを探る</h6>
 
-                            <a href="#section_2" class="btn custom-btn smoothscroll mt-3">学習を始めましょう！</a>
+                            <a href="signin.php" class="btn custom-btn smoothscroll mt-3">学習を始めましょう！</a>
                         </div>
 
-                        <!-- Trending creators -->
+                        <!-- Trending topics -->
                         <div class="owl-carousel owl-theme">
                             <?php 
-							$ret=mysqli_query($con,"select * from words limit 6");
+							$ret=mysqli_query($con,"select * from topics limit 6");
 							$cnt=1;
 							while ($row=mysqli_fetch_array($ret)) {
                             ?>
 								<div class="owl-carousel-info-wrap item">
-									<img src="images/topics/1.png" class="owl-carousel-image img-fluid" alt="">
+									<img src="images/topics/<?php echo htmlentities($row['id_topic']);?>.png" class="owl-carousel-image img-fluid" alt="">
 									<div class="owl-carousel-info">
 										<h5 class="mb-2">
-											<?php # echo htmlentities($result->username)?>
-											Topic's name
+											<?php echo htmlentities($row['topic_name']);?>
 											<img src="images/verified.png" class="owl-carousel-verified-image img-fluid" alt="">
 										</h5>
 										<span class="badge">流行</span>

@@ -9,12 +9,11 @@ if ($_SESSION['aid'] != '') {
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $pass = $_POST['password'];
+    $pass = md5($_POST['password']);
     $ret = mysqli_query($con, "INSERT INTO users (username,email,password) VALUES ('$username','$email','$pass');");
-
     if (mysqli_affected_rows($con)) {
         $_SESSION['uname'] = $_POST['username'];
-        header("location:user/dashboard.php");
+        header("location:signin.php");
     } else {
         echo "<script>alert('Invalid Details');</script>";
     }

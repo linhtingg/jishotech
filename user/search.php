@@ -1,192 +1,213 @@
-<?php session_start();
-error_reporting(0);
-// Database Connection
+<?php
 include('includes/config.php');
-//Validating Session
-if(strlen($_SESSION['aid'])==0)
-  { 
-header('location:login.php');
-}
-else{
+session_start();
+error_reporting(0);
 
-
-  ?>
-<!DOCTYPE html>
-<html lang="en">
+if (strlen($_SESSION['uid']== 0)) {
+	header('location: ../signin.php');
+} 
+else {
+?>
+<!DOCTYPE HTML>
+<html>
 
 <head>
-  
-  <title>Old Age Home Management System|| Search Senior Citizen Details</title>
-  <!-- base:css -->
-  <link rel="stylesheet" href="vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  
+	<title>JishoTech || Search Page</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<!--Custom Theme files-->
+
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	</script>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>	
+	
+	<!--start-smoth-scrolling-->
+	<!--webfonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+	<!--webfonts-->
 </head>
+
 <body>
-  
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <?php include_once('includes/header.php');?>
-    <!-- partial -->
-    <nav class="navbar-breadcrumb col-xl-12 col-12 d-flex flex-row p-0">
-  &nbsp;
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item ml-0">
-            <h4 class="mb-0">Search Senior Citizen Details</h4>
-          </li>
-          <li class="nav-item">
-            <div class="d-flex align-items-baseline">
-              <p class="mb-0">Home</p>
-              <i class="typcn typcn-chevron-right"></i>
-              <p class="mb-0">Search Senior Citizen Details</p>
-            </div>
-          </li>
-        </ul>
-       
-      </div>
-    </nav>
-    <div class="container-fluid page-body-wrapper">
-  
-      <!-- partial:partials/_sidebar.html -->
-     <?php include_once('includes/sidebar.php');?>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <form class="forms-sample" method="post">
-                    
-                    
-                   
-                  </form>
+	<?php include_once('includes/header.php'); ?>
+	
+	<!-- Content -->
+	<div class="content">
+		<!-- Frame -->
+			<!-- Input search form -->
+			<form class="search-container" method="get">
+				<input type="text" class="search-box" id="searchInput" name="searchInput" placeholder="語量">
+				<span class="search-icon">
+					<!-- BUTTON SEARCH -->
+					<button type="submit" name="search" class="search-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+					<!-- END BUTTON SEARCH -->
+				</span>
+			</form>
+			<!-- END Input search form -->
 
-                  <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Search</h4>
-                  <p class="card-description">
-                    Serach Senior Citizen details by regsitration number
-                  </p>
-                  <form class="forms-sample" method="post">
-                    
-                   <div class="form-group">
-                      <label for="exampleInputUsername1">Search By Registration Number</label>
-                      <input type="text" id="searchdata" name="searchdata" class="form-control" required="required" autofocus="autofocus" >
-                    </div>
-                   
-                   
-                    <button type="submit" name="search" class="btn btn-info btn-min-width mr-1 mb-1">Search</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-     
-          </div>
-        </div>
-            <div class="col-md-12">
+			<!-- result after query from input form -->
+			<!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
+			<?php
+				$results_per_page = 12; // Number of results per page
 
-              <div class="card">
- 
+					if (isset($_GET['page'])) {
+						$page = $_GET['page'];
+					} else {
+						$page = 1;
+					}
 
-                 
-                <div class="table-responsive pt-3">
-                  
-                  <?php
-if(isset($_POST['search']))
-{ 
+				$start_from = ($page - 1) * $results_per_page;
 
-$sdata=$_POST['searchdata'];
-  ?>
-                <h4 class="card-title" style="padding-left: 20px; padding-top: 20px;">Result against "<?php echo $sdata;?>" keyword</h4>
-                  <table class="table table-striped project-orders-table">
-                    <thead>
-                      <tr>
-                        <th class="ml-5">#</th>
-                        <th>Registration Number</th>
-                        <th>Name</th>
-                        <th>Contact Number</th>
-                        <th>Date of Birth</th>
-                        <th>Added By</th>
-                        <th>Registration Date</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                         $query=mysqli_query($con,"select * from tblseniorcitizen where tblseniorcitizen.RegistrationNumber like '$sdata%'");
-                         $num=mysqli_num_rows($query);
-if($num>0){
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
-?>
-                      <tr>
-                        <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo htmlentities($row['RegistrationNumber']);?> </td>
-                        <td><?php echo htmlentities($row['Name']);?> </td>
-                        <td><?php echo htmlentities($row['ContactNumber']);?> </td>
-                        <td><?php echo htmlentities($row['DateofBirth']);?> </td>
-                        <td><?php echo htmlentities($row['AddedBy']);?> </td>
-                        <td><?php echo htmlentities($row['RegitrationDate']);?></td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <a href="edit-scdetails.php?id=<?php echo $row['ID']?>" class="btn btn-success btn-sm btn-icon-text mr-3">Edit <i class="typcn typcn-edit btn-icon-append"></i> </a> 
-                                            <a href="manage-scdetails.php?id=<?php echo $row['ID']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm btn-icon-text">Delete <i class="typcn typcn-delete-outline btn-icon-append"></i></a>
-                          </div>
-                        </td>
-                      </tr> <?php 
-$cnt=$cnt+1;
-} } else { ?>
-  <tr>
-    <td colspan="8"> No record found against this search</td>
+				if (isset($_GET['search'])) {
+					// Tìm kiếm được kích hoạt, thực hiện truy vấn tìm kiếm
+					if (isset($_GET['searchInput'])) {
+						$sdata = $_GET['searchInput'];
 
-  </tr>
-   
-<?php } }?>
-                      
-                    </tbody>
-                  </table>
+						// // Count total number of rows
+						// $count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
+						// $count_data = mysqli_fetch_assoc($count_query);
+						// $total_pages = ceil($count_data['total'] / $results_per_page);
+						// Count total number of rows
+						$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC");
 
+						$count_data = mysqli_fetch_assoc($count_query);
+						$number_of_result = $count_data['total'];
+						$total_pages = ceil($number_of_result / $results_per_page);
+						
+						// Fetch data with pagination
+						$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
+					} else {
+						// Trường hợp không có từ khóa tìm kiếm cụ thể, không thay đổi total_pages và query
+						$query = null;
+						$total_pages = 1;
+					}
+				} else {
+					// Truy vấn khi truy cập trang lần đầu tiên hoặc không thực hiện tìm kiếm
+					$query = mysqli_query($con, "SELECT * FROM words LIMIT $start_from, $results_per_page");
+					$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words");
+					$count_data = mysqli_fetch_assoc($count_query);
+					$number_of_result = $count_data['total'];
+					$total_pages = ceil($number_of_result / $results_per_page);
+				}
+				?>
+				<!-- Hiển thị số kết quả tìm thaasy -->
+				<div> <?php echo $number_of_result ?> 枚のカードが見つかりました  </div>
+				<!-- Hiển thị kết quả -->
+				<div class="row row-cols-1 row-cols-md-4 g-4">
+					<?php
+					if ($query !== null) { // Kiểm tra xem có truy vấn không
+						$num = mysqli_num_rows($query);
 
-                </div>
-                
-              </div>
-            </div>
-          </div>
+						if ($num > 0) {
+							$cnt = 1;
+							while ($row = mysqli_fetch_array($query)) {
+								// Hiển thị kết quả tìm kiếm
+								?>
+								<div class="col">
+									<a class="card h-100 card-custom" href="detail.php?wordid=<?php echo htmlentities($row['id_word']); ?>" style="text-decoration: none;">
+										<div class="card-body">
+											<!-- ... (các nội dung thẻ card) ... -->
+											<h5 class="card-title"><?php echo htmlentities($row['kanji']);?>  </h5>
+											<p class="card-text"><?php echo htmlentities($row['hiragana']);?> </p>
+											<p class="card-text"><?php echo htmlentities($row['katakana']);?> </p>
+											<br>
+											<h6 class="card-subtitle mb-2 text-muted"><?php echo htmlentities($row['meaning']);?> </h6>
+											<p class="card-text"><?php echo htmlentities($row['romaji']);?>   </p>
+											<p class="card-text"><?php echo htmlentities($row['example']);?>  </p>
+											<p class="card-text"><?php echo htmlentities($row['status']);?>   </p>
+											<p class="card-text"><?php echo htmlentities($row['link']);?>     </p>
+										</div> 
+									</a>
+								</div>
+								<?php
+								$cnt = $cnt + 1;
+							}
+							echo '</div>';
+							echo '</div>';
 
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <?php include_once('includes/footer.php');?>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+							// Hiển thị phân trang
+							?>
+							<div class="mt-5 d-flex justify-content-center">
+								<nav aria-label="Page navigation example" class="custom-centered-nav">
+									<ul class="pagination pagination-custom">
+										<?php if ($page > 1): ?>
+										<li class="prev"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-1 ?>">Prev</a></li>
+										<?php endif; ?>
+										
+										<?php if ($page > 3): ?>
+										<li class="start"><a href="?searchInput=<?php echo $sdata ?>&search=&page=1">1</a></li>
+										<li class="page"><a>...</a></li>
+										<?php endif; ?>
+										
+										<?php if ($page-2 > 0): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a></li><?php endif; ?>
+										<?php if ($page-1 > 0): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a></li><?php endif; ?>
+										
+										<li class="currentpage"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page ?>"><b><?php echo $page ?></b></a></li>
+										
+										<?php if ($page+1 < $total_pages+1): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a></li><?php endif; ?>
+										<?php if ($page+2 < $total_pages+1): ?><li class="page"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a></li><?php endif; ?>
+										
+										<?php if ($page < $total_pages-2): ?>
+											<li class="page"><a>...</a></li>
+											<li class="end"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $total_pages ?>"><?php echo $total_pages ?></a></li>
+										<?php endif; ?>
+										
+										<?php if ($page < $total_pages): ?>
+										<li class="next"><a href="?searchInput=<?php echo $sdata ?>&search=&page=<?php echo $page+1 ?>">Next</a></li>
+										<?php endif; ?>
+									</ul>
+								</nav>
+							</div>
+							<?php
+						} else {
+							echo '<div class="container text-center no-result"> 検索結果なし</div>';
+						}
+					}
+					?>
+				</div>
 
-  <!-- base:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="vendors/chart.js/Chart.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <!-- End custom js for this page-->
+							
+			</div>
+			<!-- ENDresult after query from input form -->
+
+			<!-- END pagtination  -->
+	</div>
+	<!-- END Content -->
+
+	<!-- Footer -->
+	<div class="div-footer" > 
+		<?php include_once('includes/footer.php'); ?>
+	</div>
 </body>
 
-</html><?php } ?>
-
+</html>
+<?php } ?>

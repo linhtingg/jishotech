@@ -6,16 +6,16 @@
         <span class="title-text">トピックリスト</span>
     </div>
     <div class="list-group list-group-custom">
-        <a href="#" class="list-group-item active">全ての単語</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
-        <a href="#" class="list-group-item">コンプーター</a>
-        <a href="#" class="list-group-item">ネットワーク</a>
-        <a href="#" class="list-group-item">プログラミング</a>
+        <a class="list-group-item active">全ての単語</a>
+        <a class="list-group-item">コンプーター</a>
+        <a class="list-group-item">ネットワーク</a>
+        <a class="list-group-item">プログラミング</a>
+        <a class="list-group-item">コンプーター</a>
+        <a class="list-group-item">ネットワーク</a>
+        <a class="list-group-item">プログラミング</a>
+        <a class="list-group-item">コンプーター</a>
+        <a class="list-group-item">ネットワーク</a>
+        <a class="list-group-item">プログラミング</a>
 
   </div>
 </div>

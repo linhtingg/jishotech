@@ -2,7 +2,11 @@
 include('includes/config.php');
 session_start();
 error_reporting(0);
-
+if (isset($_GET['wordid'])) {
+	$id_word = $_GET['wordid'];
+    $ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
+    $row = mysqli_fetch_array($ret);
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -14,6 +18,8 @@ error_reporting(0);
 	<!-- Custom Theme files -->
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<!--Custom Theme files-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 	<script
 		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</script>
@@ -55,11 +61,51 @@ error_reporting(0);
 		<?php include_once('includes/search.php'); ?>
 		<div class="row">
 			<div class="col col-3">
-				<?php include_once('includes/topiclist.php'); ?>
+				<div class="card mb-4 detail-custom">
+                    <div class="card-body">
+                        <div class="card-title"><?php echo htmlentities($row['kanji']);?></div>
+                        <div class="card-text">「<?php echo htmlentities($row['hiragana']);?>」</div>
+                    </div>
+                </div>
+                <ul class="word-topic list-unstyled">
+                    <li class="text-center">情報セキュリティ</li>
+                    <li class="text-center">ネットワーク</li>
+                </ul>
 			</div>
+			<div class="col col-8">
+				<div class="detail-content">
+					
+                    <div class="detail-function d-flex justify-content-end">
+                        <button type="button" class="detail-edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="detail-bookmark">
+                            <i class="bi bi-bookmark"></i>
+                        </button>
+                    </div>
 
-			<div class="col col-9">
-				Content
+					<div class="word-mean" style="min-height: 150px">
+						<div class="word-vn">
+							<?php echo htmlentities($row['meaning']);?><br></br>
+							<?php echo htmlentities($row['example']);?>
+						</div>
+					</div>
+
+					<div class="d-flex mt-4 justify-content-between">
+						<div class="detail-img">
+							<img src="./images/img1.jpg" alt="" style="height: auto; width: 200px; margin-right: 20px;">
+							<img src="./images/img2.png" alt="" style="height: auto; width: 200px;">
+							
+						</div>
+					<div class="img-btn d-flex justify-content-center align-items-center">
+						<button type="button">語彙の他の画像</button> 
+					</div>
+						
+
+					</div>
+					
+		
+                </div>
 			</div>
 		</div>
 		
