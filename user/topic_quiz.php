@@ -154,86 +154,22 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
             </div>
             <div class="col col-9">
                 
-                <div id="">
-                    <div class="row row-cols-1 row-cols-md-3">
-                        <?php
-                          $currentTopic = isset($_GET['topic']) ? (int)$_GET['topic'] : 0;
-                          $searchTerm = isset($_GET['q']) ? $_GET['q'] : null;
-                          $query = "SELECT * FROM words";
-                          if ($currentTopic != 0) {
-                              $query .= " WHERE id_word IN (SELECT id_word FROM wordtopic WHERE id_topic = {$currentTopic})";
-                          }
-                          
-                          if ($searchTerm !== null) {
-                              if ($currentTopic != 0) {
-                                  $query .= " AND (kanji LIKE '%$searchTerm%' OR hiragana LIKE '%$searchTerm%' OR meaning LIKE '%$searchTerm%')";
-                              } else {
-                                  $query .= " WHERE (kanji LIKE '%$searchTerm%' OR hiragana LIKE '%$searchTerm%' OR meaning LIKE '%$searchTerm%')";
-                              }
-                          }
-                          
-                          $wordQuery = $conn->query($query);
-                          $words = $wordQuery->fetch_all(MYSQLI_ASSOC);
-                          
-                          $perPage = 9;
-                          $totalPages = ceil(count($words) / $perPage);
-                          $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                          $start = ($currentPage - 1) * $perPage;
-                          $pagedWords = array_slice($words, $start, $perPage);
-                          
-                            foreach ($pagedWords as $word) {
-                                ?>
-                        <div class="col mb-4 word-card">
-                            <div class="card h-100 word-card-custom">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= $word['kanji'] ?></h5>
-                                    <p class="card-text"><?= $word['hiragana'] ?></p>
-                                    <p class="card-text"><?= $word['katakana'] ?></p>
-                                    <p class="card-subtitle mt-2"><?= $word['meaning'] ?></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <?php 
-                            }
-                        ?>
-                    </div>
-
-                    <div class="mt-3 d-flex justify-content-center">
-                        <nav aria-label="Page navigation example" class="custom-centered-nav">
-                            <ul class="pagination pagination-custom">
-                                <?php
-                $numLinks = 4; 
-                $startPage = max(1, $currentPage - floor($numLinks / 2));
-                $endPage = min($totalPages, $startPage + $numLinks - 1);
-
-                if ($currentPage > 1) {
-                    echo '<li class="page-item"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . ($currentPage - 1) . '&q=' . ($searchTerm) . '">Prev</a></li>';
-                }
-
-                for ($i = $startPage; $i <= $endPage; $i++) {
-                    echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . $i . '&q=' . ($searchTerm) . '">' . $i . '</a></li>';
-                }
-
-                if ($currentPage < $totalPages) {
-                    echo '<li class="page-item"><a class="page-link" href="?topic=' . $currentTopic . '&page=' . ($currentPage + 1) . '&q=' . ($searchTerm) .'">Next</a></li>';
-                }
-                ?>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div class="topic-btn-gr">
-                    <button type="button" class="btn btn-dark">インポート</button>
-                    <button type="button" class="btn btn-dark">エクスポート</button>
-                    <button type="button" class="btn btn-primary" style="text-decoration: none">
-                        <a href="topic_quiz.php" style="color: white; text-decoration: none;">練習</a>
-                    </button>
-                </div>
-
-
-                </div>
-
+            <a data-quiz="QG50Y25Z4" data-type=4 href="https://take.quiz-maker.com/QG50Y25Z4">Loading...</a>
+                <script>
+                (function(i,s,o,g,r,a,m){
+                    var ql=document.querySelectorAll('A[quiz],DIV[quiz],A[data-quiz],DIV[data-quiz]'); 
+                    if(ql){
+                        if(ql.length){
+                            for(var k=0;k<ql.length;k++){
+                                ql[k].id='quiz-embed-'+k;
+                                ql[k].href="javascript:var i=document.getElementById('quiz-embed-"+k+"');try{qz.startQuiz(i)}catch(e){i.start=1;i.style.cursor='wait';i.style.opacity='0.5'};void(0);"}}};
+                                i['QP']=r;
+                                i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)}, i[r].l=1*new Date();
+                                a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+                                a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })
+                (window,document,'script','https://take.quiz-maker.com/3012/CDN/quiz-embed-v1.js','qp');
+                </script>
 
             </div>
         </div>
