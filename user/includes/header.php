@@ -17,7 +17,7 @@
               <a href="#" class="nav-link text-center">ブックマーク</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-center">アクション歴史</a>
+              <a href="../user/history.php" class="nav-link text-center">アクション歴史</a>
             </li>
           </ul>
     </div>

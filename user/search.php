@@ -120,7 +120,7 @@ else {
 				}
 				?>
 				<!-- Hiển thị số kết quả tìm thaasy -->
-				<div> <?php echo $number_of_result ?> 枚のカードが見つかりました  </div>
+				<div> <?php echo $number_of_result ?>枚のカードが見つかりました  </div>
 				<!-- Hiển thị kết quả -->
 				<div class="row row-cols-1 row-cols-md-4 g-4">
 					<?php

@@ -448,6 +448,55 @@ tr:nth-child(odd) {
 
 }
 
+/* ================ HISTORY ========== */
+.card-box {
+	padding: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	background-clip: padding-box;
+	margin-bottom: 20px;
+	background-color: #ffffff;
+	-webkit-box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+			box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+  .wrapper-page .card-box {
+	-webkit-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+			box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+	border: 5px solid #64b0f2;
+}
+
+.tilebox-one i {
+	font-size: 30px;
+}
+
+.m-b-15 {
+	margin-bottom: 15px !important;
+}
+
+.text-hist-1 {
+	color: black;
+	font-size: x-large !important;
+}
+
+.text-hist-2 {
+	color: #1677FF;
+	font-size: larger;
+	text-align: right;
+}
+
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+
+.card-custom-2 {
+	background-color: var(--bg-blue);
+	border-radius: 20px;
+	border: none;
+	padding: 10px;
+	transition: all 0.2s ease-out; 
+}
+
+
 /* ================FOOTER============= */
 .footer {
 	background: url(../images/footer/footer_background.png);
