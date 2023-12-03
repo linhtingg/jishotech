@@ -145,18 +145,32 @@ else {
                 <?php
                 $user_id = $_SESSION['uid'];
                 
-                $ret = mysqli_query($con, "SELECT * FROM users WHERE id_user='$user_id'");
-                $num = mysqli_fetch_array($ret);
+                $json = json_decode(file_get_contents('wordhistory.json'), true);
+
+                // foreach ($json as $row) {
+                for ($i = count($json) - 1; $i >= count($json) - 6; $i--) {
+                    $row = $json[$i];
+                    if ($row[0]['id_user'] == $user_id) {
+                        // echo '<pre>' . print_r($row[0]['id_word'], true) . '</pre>';
+                        // Get the word ID
+                        $id_word = $row[0]['id_word'];
+                        // Connect to database to get word details
+                        $ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
+                        $row = mysqli_fetch_array($ret);
                 ?>
                 
                 <div class="col-xl-12" style="margin-top: 1rem">
                     <div class="card h-100 card-custom-2" >
                         <div class="card-body">
-                            <h5 class="card-title">Kanji</h5>
-                            <h2 class="m-b-15 text-hist-2"><?php echo htmlentities($num['lastlogout']); ?></h2>
+                            <h5 class="card-title">
+                                <?php echo htmlentities($row['kanji']); ?>
+                                <span style="color: #1677FF; font-size: 15px">「<?php echo htmlentities($row['hiragana']); ?>」</span>
+                            </h5>
+                            <span class="card-text" style="text-align: right"><?php echo htmlentities($row['meaning']);?></span>
                         </div>
                     </div>
                 </div>
+                <?php }} ?>
             </div>
             <!-- Search history -->
         </div>
