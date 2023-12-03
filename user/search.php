@@ -62,7 +62,7 @@ else {
 					$myOwnChecked = '';
 
 					if ($_SERVER["REQUEST_METHOD"] == "GET") {
-						if (isset($_GET['flexRadioDefault']) && $_GET['flexRadioDefault'] == 'Only my own') {
+						if (isset($_GET['User']) && $_GET['User'] == 'Mine') {
 							$allUsersChecked = '';
 							$myOwnChecked = 'checked';
 						}
@@ -89,12 +89,12 @@ else {
 
 				<!-- <form method="get"> -->
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="All users" <?php echo $allUsersChecked; ?>>
-						<label class="form-check-label" for="flexRadioDefault1">All users</label>
+						<input class="form-check-input" type="radio" name="User" id="User1" value="All" <?php echo $allUsersChecked; ?>>
+						<label class="form-check-label" for="User1">All users</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Only my own" <?php echo $myOwnChecked; ?>>
-						<label class="form-check-label" for="flexRadioDefault2">Only my own</label>
+						<input class="form-check-input" type="radio" name="User" id="User2" value="Mine" <?php echo $myOwnChecked; ?>>
+						<label class="form-check-label" for="User2">Only my own</label>
 					</div>
 				</form>
 				<!-- END Input search form -->
@@ -117,36 +117,20 @@ else {
 						// Tìm kiếm được kích hoạt, thực hiện truy vấn tìm kiếm
 						if (isset($_GET['searchInput'])) {
 							$sdata = $_GET['searchInput'];
-							// echo "<script>alert('sdata = $sdata');</script>";
-							// if (isset($_GET['flexRadioDefault'])) {
-							// 	$selectedOption = $_GET['flexRadioDefault'];
-							// 	echo "<script>alert('selectedOption = $selectedOption');</script>";
-								
-							// 	if ($selectedOption == 'All users') {
-							// 		// The "All users" radio button is checked
-							// 		// Add your code here for this case
-							// 	} elseif ($selectedOption == 'Only my own') {
-							// 		// The "Only my own" radio button is checked
-							// 		// Add your code here for this case
-							// 	}
-							// }
-							$searchScope = isset($_GET['flexRadioDefault']) && $_GET['flexRadioDefault'] == 'Only my own' ? 'user' : 'all';
+							$searchScope = isset($_GET['User']) && $_GET['User'] == 'Mine' ? 'user' : 'all';
 
 							// echo "<script>alert('searchScope = $searchScope');</script>";
 							if ($searchScope == 'user') {
-								// Query to search within user's words
-								$query_string = "SELECT words.* FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
-								echo "<script>alert('query_string = $query_string');</script>";
-								
-								$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid");
+								// Query for all users
+								$query_string = "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
+								$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND id_user = $uid");
 								$count_data = mysqli_fetch_assoc($count_query);
 								$number_of_result = $count_data['total'];
 								$total_pages = ceil($number_of_result / $results_per_page);
-								$query = mysqli_query($con, "SELECT words.* FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
+								$query = mysqli_query($con, "SELECT * FROM words WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
 							} else {
 								// Query for all users
 								$query_string = "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
-								
 								$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%'");
 								$count_data = mysqli_fetch_assoc($count_query);
 								$number_of_result = $count_data['total'];
