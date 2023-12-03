@@ -5,11 +5,15 @@ include("includes/config.php");
 if (isset($_POST['signin'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    $ret = mysqli_query($con, "SELECT id_user FROM users WHERE userName='$username' and password='$password'");
+    $ret = mysqli_query($con, "SELECT * FROM users WHERE username='$username' and password='$password'");
     $num = mysqli_fetch_array($ret);
+    $now = new DateTime();
+    $now_s = $now->format('Y-m-d H:i:s');
     if ($num > 0) {
-        $_SESSION['uname'] = $_POST['uname'];
+        $_SESSION['uname'] = $_POST['username'];
         $_SESSION['uid'] = $num['id_user'];
+        
+        $req = mysqli_query($con, "UPDATE users SET lastlogin = '$now_s' WHERE username='$username'");
         header("location: user/search.php");
     } else {
         echo "<script>alert('Invalid username or password');</script>";
