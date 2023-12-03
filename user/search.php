@@ -135,14 +135,14 @@ else {
 							// echo "<script>alert('searchScope = $searchScope');</script>";
 							if ($searchScope == 'user') {
 								// Query to search within user's words
-								$query_string = "SELECT words.* FROM words JOIN user_word ON words.id_word = user_word.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND user_word.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
+								$query_string = "SELECT words.* FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
 								echo "<script>alert('query_string = $query_string');</script>";
 								
-								$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words JOIN user_word ON words.id_word = user_word.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND user_word.id_user = $uid");
+								$count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid");
 								$count_data = mysqli_fetch_assoc($count_query);
 								$number_of_result = $count_data['total'];
 								$total_pages = ceil($number_of_result / $results_per_page);
-								$query = mysqli_query($con, "SELECT words.* FROM words JOIN user_word ON words.id_word = user_word.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND user_word.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
+								$query = mysqli_query($con, "SELECT words.* FROM words JOIN word_user ON words.id_word = word_user.id_word WHERE (kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%') AND word_user.id_user = $uid ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
 							} else {
 								// Query for all users
 								$query_string = "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page";
