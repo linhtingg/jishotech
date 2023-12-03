@@ -110,14 +110,18 @@ else {
                 $num = mysqli_fetch_array($ret);
 
                 $now = new DateTime();
-                // $interval = $num['lastlogout']->diff($now);
+                $lastlogout = date_create_from_format('Y-m-d H:i:s',$num['lastlogout']);
+                $lastlogin = date_create_from_format('Y-m-d H:i:s',$num['lastlogin']);
+                
+                $interval2 = date_diff($now,$lastlogout);
+                $interval1 = date_diff($now,$lastlogin);
                 ?>
                 <div class="col-md-6 col-xl-6">
                     <div class="card h-100 card-custom" >
                         <div class="card-body">
                             <i class="fa fa-desktop float-right"></i>
                             <h6 class="text-hist-1 text-uppercase m-b-15">最後にアカウントにログインした</h6>
-                            <h2 class="m-b-15 text-hist-2"><?php echo htmlentities($num['lastlogout']); ?>&nbsp</h2>
+                            <h2 class="m-b-15 text-hist-2"><?php echo $interval1->format('%D days %H hours'); ?>&nbsp</h2>
                         </div>
                     </div>
                 </div>
@@ -127,7 +131,7 @@ else {
                         <div class="card-body">
                             <i class="fa fa-desktop float-right"></i>
                             <h6 class="text-hist-1 text-uppercase m-b-15">最後にアカウントにログアウトした</h6>
-                            <h2 class="m-b-15 text-hist-2" style="color: tomato"><?php echo htmlentities($num['lastlogout']); ?>&nbsp</h2>
+                            <h2 class="m-b-15 text-hist-2" style="color: tomato"><?php echo $interval2->format('%D days %H hours'); ?>&nbsp</h2>
                         </div>
                     </div>
                 </div>
