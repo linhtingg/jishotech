@@ -202,7 +202,7 @@ else {
                                         <p class="card-text">
                                             <?= $word['katakana'] ?>
                                         </p>
-                                        <p class="card-subtitle mt-2">
+                                        <p class="card-subtitle mt-2"  style="font: 15px Roboto;">
                                             <?= $word['meaning'] ?>
                                         </p>
                                     </div>

@@ -177,7 +177,8 @@ else {
 												<p class="card-text"><?php echo htmlentities($row['hiragana']);?> </p>
 												<p class="card-text"><?php echo htmlentities($row['katakana']);?> </p>
 												<br>
-												<h6 class="card-subtitle mb-2 text-muted"><?php echo htmlentities($row['meaning']);?> </h6>
+												<h6 class="card-subtitle mb-2 text-muted" style="font: 18px Roboto;">
+													<?php echo htmlentities($row['meaning']);?> </h6>
 												<p class="card-text"><?php echo htmlentities($row['romaji']);?>   </p>
 												<p class="card-text"><?php echo htmlentities($row['example']);?>  </p>
 												<p class="card-text"><?php echo htmlentities($row['status']);?>   </p>

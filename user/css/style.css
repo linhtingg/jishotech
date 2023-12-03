@@ -459,10 +459,10 @@ tr:nth-child(odd) {
 	-webkit-box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 			box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
 }
-  .wrapper-page .card-box {
-	-webkit-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-			box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-	border: 5px solid #64b0f2;
+.wrapper-page .card-box {
+-webkit-box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+		box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+border: 5px solid #64b0f2;
 }
 
 .tilebox-one i {
@@ -494,6 +494,14 @@ tr:nth-child(odd) {
 	border: none;
 	padding: 10px;
 	transition: all 0.2s ease-out; 
+	.card-body .card-title {
+		font-size: 20px;
+		color: black;
+	}
+	.card-text {
+		font-family: Roboto;
+		color: gray;
+	}
 }
 
 
