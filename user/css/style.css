@@ -267,7 +267,6 @@ tr:nth-child(odd) {
 	max-width: 1200px;
 	margin: 0 auto;
 	position: relative;
-	margin-bottom: 60px;
 }
 .search-box {
 	width: calc(100% - 40px);
@@ -446,6 +445,12 @@ tr:nth-child(odd) {
 
 .word-detail {
 
+}
+
+
+/* =============== CREATE MODAL ======= */
+label {
+	color: var(--primary-color);
 }
 
 /* ================FOOTER============= */
