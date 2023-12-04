@@ -18,6 +18,18 @@ else {
 		$id_word = $_GET['wordid'];
 		$ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
 		$row = mysqli_fetch_array($ret);
+
+		// error_reporting(E_ALL);
+    	// ini_set('display_errors',1);
+		$temp['id_user'] = $_SESSION['uid'];
+		$temp['id_word'] = $id_word;
+		$data[] = $temp;
+
+		$inp = file_get_contents('wordhistory.json');
+		$tempArray = json_decode($inp);
+		array_push($tempArray, $data);
+		$jsonData = json_encode($tempArray);
+		file_put_contents('wordhistory.json', $jsonData);
 	}
 
 

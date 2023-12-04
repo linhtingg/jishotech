@@ -18,7 +18,7 @@ else {
 <html lang="en">
 
 <head>
-    <title>JishoTech || Topic Page</title>
+    <title>JishoTech || BookMark Page</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -166,9 +166,9 @@ else {
                         <?php
                         $currentTopic = isset($_GET['topic']) ? (int) $_GET['topic'] : 0;
                         $searchTerm = isset($_GET['q']) ? $_GET['q'] : null;
-                        $query = "SELECT * FROM words";
+                        $query = "SELECT * FROM words WHERE id_user = {$_SESSION['uid']}";
                         if ($currentTopic != 0) {
-                            $query .= " WHERE id_word IN (SELECT id_word FROM wordtopic WHERE id_topic = {$currentTopic})";
+                            $query .= " AND WHERE id_word IN (SELECT id_word FROM wordtopic WHERE id_topic = {$currentTopic})";
                         }
 
                         if ($searchTerm !== null) {
@@ -192,7 +192,7 @@ else {
                             ?>
                             <div class="col mb-4 word-card">
                                 <div class="card h-100 word-card-custom">
-                                    <a style = "text-decoration:none" href="detail.php?wordid=<?php echo htmlentities($word['id_word']); ?>" >
+                                <a style = "text-decoration:none"  href="detail.php?wordid=<?php echo htmlentities($word['id_word']); ?>" >
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <?= $word['kanji'] ?>
@@ -207,7 +207,7 @@ else {
                                             <?= $word['meaning'] ?>
                                         </p>
                                     </div>
-                                    </a>
+                        </a>
                                 </div>
                             </div>
 

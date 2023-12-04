@@ -78,7 +78,7 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                 <a href="topic.php" class="nav-link text-center">トピックリスト</a>
                 </li>
                 <li  class="nav-item">
-                <a href="#" class="nav-link text-center">ブックマーク</a>
+                <a href="bookmark.php" class="nav-link text-center">ブックマーク</a>
                 </li>
                 <li class="nav-item">
                 <a href="history.php" class="nav-link text-center">アクション歴史</a>
