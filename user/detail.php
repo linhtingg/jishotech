@@ -1,5 +1,12 @@
 <?php
 include('includes/config.php');
+
+$con = new mysqli("localhost", "root", "", "jishotech");
+
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
 session_start();
 error_reporting(0);
 
@@ -11,19 +18,9 @@ else {
 		$id_word = $_GET['wordid'];
 		$ret = mysqli_query($con, "SELECT * FROM words WHERE id_word='$id_word' limit 1");
 		$row = mysqli_fetch_array($ret);
-		
-		// error_reporting(E_ALL);
-    	// ini_set('display_errors',1);
-		$temp['id_user'] = $_SESSION['uid'];
-		$temp['id_word'] = $id_word;
-		$data[] = $temp;
-
-		$inp = file_get_contents('wordhistory.json');
-		$tempArray = json_decode($inp);
-		array_push($tempArray, $data);
-		$jsonData = json_encode($tempArray);
-		file_put_contents('wordhistory.json', $jsonData);
 	}
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -75,7 +72,33 @@ else {
 <body>
 	<?php include_once('includes/header.php'); ?>
 	<div class="content">
-		<?php include_once('includes/search.php'); ?>
+		<div class="row mb-5">
+			<div class="col-2">
+			</div>
+			<div class="col-8">
+				<form class="search-container">
+					<input type="text" class="search-box" id="searchInput" name="q" placeholder="語量">
+					<span class="search-icon">
+					<button type="submit" name="search" class="search-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+					</span>
+				</form>
+			</div>
+		<div class="col-2">
+			<button type="button" style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#addModal">
+				<i class="bi bi-plus-circle" style="font-size: 30px; font-weight: 500; color: #1677FF"></i>
+			</button>
+		</div>
+	</div>
+	<?php include_once('includes/createModal.php'); ?>
+		
+
 		<div class="row">
 			<div class="col col-3">
 				<div class="card mb-4 detail-custom">

@@ -504,6 +504,10 @@ border: 5px solid #64b0f2;
 	}
 }
 
+/* ================ CREATE MODAL ========== */
+label {
+	color: var(--primary-color);
+}
 
 /* ================FOOTER============= */
 .footer {
