@@ -244,7 +244,7 @@ else {
                     <button type="button" class="btn btn-dark">インポート</button>
                     <button type="button" class="btn btn-dark">エクスポート</button>
                     <button type="button" class="btn btn-primary" style="text-decoration: none">
-                        <a href="topic_quiz.php" style="color: white; text-decoration: none;">練習</a>
+                        <a href="topic_quiz.php?quiz=<?php echo $_GET['topic']?>" style="color: white; text-decoration: none;">練習</a>
                     </button>
                 </div>
 

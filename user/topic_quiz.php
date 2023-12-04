@@ -145,32 +145,28 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
                         <a href="topic.php?topic=0" class="list-group-item">全ての単語</a>
                         <?php
                     foreach ($topics as $topic) {
-                        echo "<a class=\"list-group-item\" href=\"?topic={$topic['id_topic']}\">{$topic['topic_name']}</a>";
+                        echo "<a class=\"list-group-item\" href=\"topic.php?topic={$topic['id_topic']}\">{$topic['topic_name']}</a>";
                     }
                     ?>
                     </div>
 
                 </div>
             </div>
+            <!-- Quiz content -->
             <div class="col col-9">
-                
-            <a data-quiz="QG50Y25Z4" data-type=4 href="https://take.quiz-maker.com/QG50Y25Z4">Loading...</a>
-                <script>
-                (function(i,s,o,g,r,a,m){
-                    var ql=document.querySelectorAll('A[quiz],DIV[quiz],A[data-quiz],DIV[data-quiz]'); 
-                    if(ql){
-                        if(ql.length){
-                            for(var k=0;k<ql.length;k++){
-                                ql[k].id='quiz-embed-'+k;
-                                ql[k].href="javascript:var i=document.getElementById('quiz-embed-"+k+"');try{qz.startQuiz(i)}catch(e){i.start=1;i.style.cursor='wait';i.style.opacity='0.5'};void(0);"}}};
-                                i['QP']=r;
-                                i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)}, i[r].l=1*new Date();
-                                a=s.createElement(o),m=s.getElementsByTagName(o)[0];
-                                a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })
-                (window,document,'script','https://take.quiz-maker.com/3012/CDN/quiz-embed-v1.js','qp');
-                </script>
-
+                <?php 
+                if (isset($_GET['quiz'])) {
+                    $id_topic = $_GET['quiz'];
+                    switch ($id_topic % 3) {
+                        case 1:?>
+                            <a data-quiz="QG50Y25Z4" data-type=4 href="https://take.quiz-maker.com/QG50Y25Z4">Loading...</a><script>(function(i,s,o,g,r,a,m){var ql=document.querySelectorAll('A[quiz],DIV[quiz],A[data-quiz],DIV[data-quiz]'); if(ql){if(ql.length){for(var k=0;k<ql.length;k++){ql[k].id='quiz-embed-'+k;ql[k].href="javascript:var i=document.getElementById('quiz-embed-"+k+"');try{qz.startQuiz(i)}catch(e){i.start=1;i.style.cursor='wait';i.style.opacity='0.5'};void(0);"}}};i['QP']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://take.quiz-maker.com/3012/CDN/quiz-embed-v1.js','qp');</script>
+                        <?php break;
+                        case 2:?>
+                            <a data-quiz="QCVYK5VT0" data-type=4 href="https://take.quiz-maker.com/QCVYK5VT0">Loading...</a><script>(function(i,s,o,g,r,a,m){var ql=document.querySelectorAll('A[quiz],DIV[quiz],A[data-quiz],DIV[data-quiz]'); if(ql){if(ql.length){for(var k=0;k<ql.length;k++){ql[k].id='quiz-embed-'+k;ql[k].href="javascript:var i=document.getElementById('quiz-embed-"+k+"');try{qz.startQuiz(i)}catch(e){i.start=1;i.style.cursor='wait';i.style.opacity='0.5'};void(0);"}}};i['QP']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://take.quiz-maker.com/3012/CDN/quiz-embed-v1.js','qp');</script>
+                        <?php break;
+                        default:?>
+                            <a data-quiz="Q65Y75MAQ" data-type=4 href="https://take.quiz-maker.com/Q65Y75MAQ">Loading...</a><script>(function(i,s,o,g,r,a,m){var ql=document.querySelectorAll('A[quiz],DIV[quiz],A[data-quiz],DIV[data-quiz]'); if(ql){if(ql.length){for(var k=0;k<ql.length;k++){ql[k].id='quiz-embed-'+k;ql[k].href="javascript:var i=document.getElementById('quiz-embed-"+k+"');try{qz.startQuiz(i)}catch(e){i.start=1;i.style.cursor='wait';i.style.opacity='0.5'};void(0);"}}};i['QP']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://take.quiz-maker.com/3012/CDN/quiz-embed-v1.js','qp');</script>
+                        <?php }} ?>
             </div>
         </div>
     </div>
@@ -182,7 +178,7 @@ $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 
 $(document).ready(function() {
 
-    var currentTopicId = getUrlParameter('topic');
+    var currentTopicId = getUrlParameter('quiz');
     if (currentTopicId === '' || currentTopicId === '0') {
 
         $('a[href="topic.php?topic=0"]').addClass('active');
