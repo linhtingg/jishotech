@@ -243,8 +243,8 @@ else {
                     <div class="topic-btn-gr">
                     <button type="button" class="btn btn-dark">インポート</button>
                     <button type="button" class="btn btn-dark">エクスポート</button>
-                    <button type="button" class="btn btn-primary" style="text-decoration: none">
-                        <a href="topic_quiz.php" style="color: white; text-decoration: none;">練習</a>
+                    <button type="button" class="btn btn-danger" style="text-decoration: none; background-color: transparent; color: red;">
+                        <a href="topic_quiz.php" style="color: red; text-decoration: none;">削除</a>
                     </button>
                 </div>
 

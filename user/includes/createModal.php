@@ -27,7 +27,7 @@
 					mysqli_query($con, $insertWordTopicSQL);
 				}
 
-				echo '<p class="success">Từ vựng mới đã được thêm thành công!</p>';
+				echo '<p class="success">新しい語彙が正常に追加されました。</p>';
 			} else {
 				echo '<p class="error">Lỗi: ' . $sql . '<br>' . mysqli_error($con) . '</p>';
 			}

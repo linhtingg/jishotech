@@ -19,9 +19,9 @@
             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
                 <h6 class="site-footer-title mb-3">Contact</h6>
                 <p>
-                    <p class="d-inline me-2">Shecodes 2023</p>
+                    <p class="d-inline me-2">NNN チーム　－　ITSS日本語</p>
                 </p>
-                <p class="mb-2"><strong class="d-inline me-2">NGENE TEAM</strong></p>
+                <p class="mb-2"><strong class="d-inline me-2">Pixel チーム</strong></p>
             </div>
 
             <div class="col-lg-3 col-md-6 col-12">

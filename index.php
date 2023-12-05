@@ -112,97 +112,6 @@ include('includes/config.php');
                 </div>
             </div>
         </section>
-                        
-        <!-- Festive season topic section -->
-        <section class="topics-section section-padding pb-0" id="section_3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-12">
-                        <div class="section-title-wrap mb-5">
-                            <h4 class="section-title">お祭りの季節</h4>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block custom-block-overlay">
-                            <a href="signin.php" class="custom-block-image-wrap">
-                                <img src="images/topics/1.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
-
-                            <div class="custom-block-info custom-block-overlay-info">
-                                <h5 class="mb-1">
-                                    <a href="signin.php">
-                                        Air pollution
-                                    </a>
-                                </h5>
-
-                                <p class="badge mb-0">50 Podcasts</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block custom-block-overlay">
-                            <a href="signin.php" class="custom-block-image-wrap">
-                                <img src="images/topics/2.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
-
-                            <div class="custom-block-info custom-block-overlay-info">
-                                <h5 class="mb-1">
-                                    <a href="signin.php">
-                                        Water pollution
-                                    </a>
-                                </h5>
-
-                                <p class="badge mb-0">12 Podcasts</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block custom-block-overlay">
-                            <a href="signin.php" class="custom-block-image-wrap">
-                                <img src="images/topics/3.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
-
-                            <div class="custom-block-info custom-block-overlay-info">
-                                <h5 class="mb-1">
-                                    <a href="signin.php">
-                                        Biodiversity loss
-                                    </a>
-                                </h5>
-
-                                <p class="badge mb-0">35 Podcasts</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                        <div class="custom-block custom-block-overlay">
-                            <a href="signin.php" class="custom-block-image-wrap">
-                                <img src="images/topics/4.png"
-                                    class="custom-block-image img-fluid" alt="">
-                            </a>
-
-                            <div class="custom-block-info custom-block-overlay-info">
-                                <h5 class="mb-1">
-                                    <a href="signin.php">
-                                        Natural resource
-                                    </a>
-                                </h5>
-
-                                <p class="badge mb-0">12 Podcasts</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- End of Festive season topic section -->
 
         <!-- Technoloy fields section -->
         <section class="trending-podcast-section section-padding pt-0">
@@ -219,7 +128,7 @@ include('includes/config.php');
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
                                 <a href="signin.php">
-                                    <img src="images/podcast/1.jpg" class="custom-block-image img-fluid"
+                                    <img src="images/topics/6.png" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>
                             </div>
@@ -264,7 +173,7 @@ include('includes/config.php');
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
                                 <a href="signin.php">
-                                    <img src="images/podcast/5.jpg" class="custom-block-image img-fluid"
+                                    <img src="images/topics/5.png" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>
                             </div>
@@ -309,7 +218,7 @@ include('includes/config.php');
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
                                 <a href="signin.php">
-                                    <img src="images/podcast/4.jpg" class="custom-block-image img-fluid"
+                                    <img src="images/topics/4.png" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>
                             </div>
