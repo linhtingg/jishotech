@@ -81,10 +81,10 @@ else {
                 <li class="nav-item">
                 <a href="search.php" class="nav-link text-center">単語の探索</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                 <a href="topic.php" class="nav-link text-center">トピックリスト</a>
                 </li>
-                <li  class="nav-item">
+                <li  class="nav-item active">
                 <a href="bookmark.php" class="nav-link text-center">ブックマーク</a>
                 </li>
                 <li class="nav-item">

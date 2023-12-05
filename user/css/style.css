@@ -267,7 +267,7 @@ tr:nth-child(odd) {
 	max-width: 1200px;
 	margin: 0 auto;
 	position: relative;
-	margin-bottom: 60px;
+	margin-bottom: 50px;
 }
 .search-box {
 	width: calc(100% - 40px);
