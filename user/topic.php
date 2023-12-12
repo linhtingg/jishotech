@@ -10,7 +10,7 @@ if (strlen($_SESSION['uid']== 0)) {
 	header('location: ../signin.php');
 } 
 else {
-    $topicQuery = $conn->query("SELECT * FROM Topics");
+    $topicQuery = $conn->query("SELECT * FROM topics");
     $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 ?>
 
