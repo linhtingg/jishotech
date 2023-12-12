@@ -10,7 +10,10 @@ if (strlen($_SESSION['uid']== 0)) {
 	header('location: ../signin.php');
 } 
 else {
+	$username = $_SESSION['uname'];
+	// echo "<script>alert('username = $username');</script>";
 	?>
+
 	<!DOCTYPE HTML>
 	<html>
 
@@ -72,7 +75,6 @@ else {
 							$myOwnChecked = 'checked';
 						}
 					}
-					// echo "<script>alert('myOwnChecked = $myOwnChecked');</script>";
 
 				?>
 				<form method="get">
@@ -80,31 +82,27 @@ else {
 					
 					<div class="col-9">
 						<div class="search-container">
-						<input type="text" class="search-box" id="searchInput" name="searchInput" placeholder="語量">
-						<span class="search-icon">
-							<!-- BUTTON SEARCH -->
-							<button type="submit" name="search" class="search-btn">
-								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
-									<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-							</button>
-							<!-- END BUTTON SEARCH -->
-						</span>
+							<input type="text" class="search-box" id="searchInput" name="searchInput" placeholder="語量">
+							<span class="search-icon">
+								<!-- BUTTON SEARCH -->
+								<button type="submit" name="search" class="search-btn">
+									<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 35 35" fill="none">
+										<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										<circle cx="14.5833" cy="14.5833" r="10.2083" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M30.625 30.625L21.875 21.875" stroke="#4B465C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M30.625 30.625L21.875 21.875" stroke="white" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</button>
+							</span>
+							</div>
 						</div>
-					</div>
-				<!-- </form> -->
-				<!-- END Input search form -->
-				<div class="col-1">
-				<button type="button" style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#addModal">
-					<i class="bi bi-plus-circle" style="font-size: 30px; font-weight: 500; color: #1677FF"></i>
-				</button>
-				<?php include_once('includes/createModal.php'); ?>
-				</div>
+						<div class="col-1">
+							<button type="button" style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#addModal">
+								<i class="bi bi-plus-circle" style="font-size: 30px; font-weight: 500; color: #1677FF"></i>
+							</button>
+							<?php include_once('includes/createModal.php'); ?>
+						</div>
 
-				<!-- <form method="get"> -->
 						<div class="col-2 mt-2">
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="User" id="User1" value="All" <?php echo $allUsersChecked; ?>>
@@ -112,7 +110,7 @@ else {
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="User" id="User2" value="Mine" <?php echo $myOwnChecked; ?>>
-								<label class="form-check-label" for="User2">あなたの</label>
+								<label class="form-check-label" for="User2"><?php echo "$username "?>の</label>
 							</div>
 						</div>
 					</div>
@@ -157,11 +155,6 @@ else {
 								$total_pages = ceil($number_of_result / $results_per_page);
 								$query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
 							}
-							// $count_query = mysqli_query($con, "SELECT COUNT(*) AS total FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC");
-							// echo "<script>alert('check !!!!!!');</script>";
-							
-							// Fetch data with pagination
-							// $query = mysqli_query($con, "SELECT * FROM words WHERE kanji LIKE '%$sdata%' OR hiragana LIKE '%$sdata%' OR meaning LIKE '%$sdata%' ORDER BY hiragana ASC LIMIT $start_from, $results_per_page");
 						} else {
 							// Trường hợp không có từ khóa tìm kiếm cụ thể, không thay đổi total_pages và query
 							$query = null;
