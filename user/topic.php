@@ -12,6 +12,7 @@ if (strlen($_SESSION['uid']== 0)) {
 else {
     $topicQuery = $conn->query("SELECT * FROM topics");
     $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
+    // echo "<script>alert('Debug topics $topics');</script>";
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +35,6 @@ else {
     function hideURLbar() {
         window.scrollTo(0, 1);
     }
-    </script>
     </script>
     <script src="js/jquery-1.8.3.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
@@ -241,12 +241,63 @@ else {
                     </div>
 
                     <div class="topic-btn-gr">
-                    <button type="button" class="btn btn-dark">インポート</button>
-                    <button type="button" class="btn btn-dark">エクスポート</button>
-                    <button type="button" class="btn btn-primary" style="text-decoration: none">
-                        <a href="topic_quiz.php?quiz=<?php echo isset($_GET['topic'] ) ? $_GET['topic'] : '' ?>" style="color: white; text-decoration: none;">練習</a>
-                    </button>
-                </div>
+                        <form method="post" action="">
+                            <button type="button" class="btn btn-dark">インポート</button>
+                            <button type="submit" name="exportButton" class="btn btn-dark">エクスポート EXPORT</button>
+                            <button type="button" class="btn btn-primary" style="text-decoration: none">
+                                <a href="topic_quiz.php?quiz=<?php echo isset($_GET['topic'] ) ? $_GET['topic'] : '' ?>" style="color: white; text-decoration: none;">練習</a>
+                            </button>
+                        </form>
+                    </div>
+                    <?php
+                    // Function to export data to CSV
+                    function exportToCSV($topicID) {
+                        // Retrieve topic name
+                        $queryCurrentTopicsName = mysqli_query($GLOBALS['conn'], "SELECT topic_name FROM topics WHERE id_topic = $topicID ");
+                        $topicName = mysqli_fetch_assoc($queryCurrentTopicsName)['topic_name'];
+                        echo "<script>console.log('topicName $topicName');</script>\n";
+
+                        // Set the filename for the CSV
+                        $filename = $topicName . '.csv';
+                        echo "<script>console.log('filename $filename');</script>\n";
+                        
+                        // Prepare SQL query to fetch data
+                        $wordQuery = mysqli_query($GLOBALS['conn'], "SELECT words.* FROM words INNER JOIN wordtopic ON words.id_word = wordtopic.id_word WHERE wordtopic.id_topic = $topicID;");
+                        
+                        // Check if data exists
+                        if (mysqli_num_rows($wordQuery) > 0) {
+                            // Set headers to force download the file
+                            // header('Content-Type: text/html;  charset=UTF-8;');
+                            header('Content-Type: application/csv;');
+                            // echo "\xEF\xBB\xBF"; // UTF  -8 BOM
+                            header('Content-Disposition: attachment; filename="topic.csv";');
+                            
+                            // Open file pointer to php://output (output stream)
+                            $output = fopen('php://output', 'w');
+                            
+                            // Write header row
+                            fputcsv($output, array('kanji', 'katakana', 'romaji', 'hiragana', 'meaning', 'example', 'status', 'link'));
+
+                            // Write data rows
+                            while ($row = mysqli_fetch_assoc($wordQuery)) {
+                                // echo "'{$row['kanji']}','{$row['katakana']}','{$row['romaji']}','{$row['hiragana']}','{$row['meaning']}','{$row['example']}','{$row['status']}','{$row['link']}'<br>\n";
+                                fputcsv($output, $row);
+                            }
+                            
+                            fseek($output, 0);
+                            // Close file pointer
+                            fclose($output);
+                            // exit;
+                        } else {
+                            echo "No data found.";
+                        }
+                    }
+                    // Check if the export button is clicked
+                    if (isset($_POST['exportButton'])) {
+                        exportToCSV($currentTopic);
+                    }
+                    
+                    ?>
 
 
                 </div>
@@ -260,33 +311,31 @@ else {
     <?php include_once('includes/footer.php'); ?>
 
     <script>
+        $(document).ready(function() {
 
-$(document).ready(function() {
+            var currentTopicId = getUrlParameter('topic');
+            if (currentTopicId === '' || currentTopicId === '0') {
 
-    var currentTopicId = getUrlParameter('topic');
-    if (currentTopicId === '' || currentTopicId === '0') {
+                $('a[href="topic.php?topic=0"]').addClass('active');
+            } else {
+                $('.list-group-item').removeClass('active');
+                $('a[href="?topic=' + currentTopicId + '"]').addClass('active');
+            }
 
-        $('a[href="topic.php?topic=0"]').addClass('active');
-    } else {
-        $('.list-group-item').removeClass('active');
-        $('a[href="?topic=' + currentTopicId + '"]').addClass('active');
-    }
+            $('.list-group-item').click(function(e) {
+                e.preventDefault();
+                $('.list-group-item').removeClass('active');
+                $(this).addClass('active');
+                window.location.href = $(this).attr('href');
+            });
 
-    $('.list-group-item').click(function(e) {
-        e.preventDefault();
-        $('.list-group-item').removeClass('active');
-        $(this).addClass('active');
-        window.location.href = $(this).attr('href');
-    });
-
-    function getUrlParameter(name) {
-        name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
-});
-
+            function getUrlParameter(name) {
+                name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+        });
     </script>
 </body>
 
