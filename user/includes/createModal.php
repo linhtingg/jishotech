@@ -85,7 +85,7 @@
 								<div class="col-sm-10">
 									<select class="form-select" name="topicSelect" id="topicSelect">
 										<?php
-											$topicQuery = $con->query("SELECT * FROM Topics");
+											$topicQuery = $con->query("SELECT * FROM topics");
 											$topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 
 											foreach ($topics as $topic) {

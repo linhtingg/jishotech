@@ -1,8 +1,8 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "jishotech");
+$con = new mysqli("localhost", "root", "", "jishotech");
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
 }
 
 session_start();
@@ -10,7 +10,7 @@ if (strlen($_SESSION['uid']== 0)) {
 	header('location: ../signin.php');
 } 
 else {
-    $topicQuery = $conn->query("SELECT * FROM Topics");
+    $topicQuery = $con->query("SELECT * FROM Topics");
     $topics = $topicQuery->fetch_all(MYSQLI_ASSOC);
 ?>
 
@@ -160,7 +160,18 @@ else {
                 </div>
             </div>
             <div class="col col-9">
-                
+            <div class="topic-btn-gr d-flex justify-content-between">
+                    <div>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#importModal">インポート</button>
+                        <button type="button" class="btn btn-dark">エクスポート</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" style="text-decoration: none">
+                            <a href="topic_quiz.php?quiz=<?php echo isset($_GET['topic'] ) ? $_GET['topic'] : '' ?>" style="color: white; text-decoration: none;">練習</a>
+                        </button>
+                    </div>
+                </div>
+                <?php include_once('includes/importModal.php')?>
                 <div id="">
                     <div class="row row-cols-1 row-cols-md-3">
                         <?php
@@ -179,7 +190,7 @@ else {
                             }
                         }
 
-                        $wordQuery = $conn->query($query);
+                        $wordQuery = $con->query($query);
                         $words = $wordQuery->fetch_all(MYSQLI_ASSOC);
 
                         $perPage = 9;
@@ -239,16 +250,6 @@ else {
                             </ul>
                         </nav>
                     </div>
-
-                    <div class="topic-btn-gr">
-                    <button type="button" class="btn btn-dark">インポート</button>
-                    <button type="button" class="btn btn-dark">エクスポート</button>
-                    <button type="button" class="btn btn-primary" style="text-decoration: none">
-                        <a href="topic_quiz.php?quiz=<?php echo isset($_GET['topic'] ) ? $_GET['topic'] : '' ?>" style="color: white; text-decoration: none;">練習</a>
-                    </button>
-                </div>
-
-
                 </div>
 
 
