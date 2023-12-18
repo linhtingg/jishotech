@@ -128,10 +128,12 @@ else {
 				<div class="detail-content">
 					
                     <div class="detail-function d-flex justify-content-end">
-                        <button type="button" class="detail-edit">
+                        <button type="button" class="detail-edit" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button type="button" class="detail-bookmark">
+						<?php include_once('includes/editModal.php'); ?>
+                        
+						<button type="button" class="detail-bookmark">
                             <i class="bi bi-bookmark"></i>
                         </button>
                     </div>
