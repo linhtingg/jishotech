@@ -362,6 +362,12 @@ tr:nth-child(odd) {
 	padding: 5px 30px;
 }
 
+.topic-btn-gr input {
+	border-radius: 18px;
+	margin-left: 20px;
+	padding: 5px 30px;
+}
+
 .word-card-custom {
 	background-color: var(--bg-blue);
 	border: none;
