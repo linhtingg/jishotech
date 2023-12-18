@@ -151,8 +151,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
                     </span>
                 </form>
-                <button type="button" id="selectAll">全て選択</button>
-                <button type="button" id="deselectAll">全て選択解除</button>
+                
                 <!--  -->
                 <div class="row">
                     <div class="col col-3">
@@ -176,6 +175,19 @@ if (strlen($_SESSION['uid'] == 0)) {
                         </div>
                     </div>
                     <div class="col col-9">
+                    <div class="topic-btn-gr d-flex justify-content-between">
+                                <div>
+                                    <button type="button" class="btn btn-dark">インポート</button>
+                                    <button type="button" class="btn btn-dark">エクスポート</button>
+                                    <button type="button" class="btn btn-danger" id="deleteButton" style="text-decoration: none;">
+                                        削除
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="button" id="selectAll" class="btn btn-danger" style="text-decoration: none; background-color: transparent; color: red;">全て選択</button>
+                                    <button type="button" id="deselectAll" class="btn btn-danger" style="text-decoration: none; background-color: transparent; color: red;">全て選択解除</button>
+                                </div>
+                            </div>
 
                         <div id="">
                             <div class="row row-cols-1 row-cols-md-3">
@@ -208,9 +220,10 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 ?>
                                     <div class="col mb-4 word-card">
                                         <div class="card h-100 word-card-custom">
-                                            <input type="checkbox" name="deleteWord[]" value="<?= $word['id_word'] ?>">
+                                            
                                             <a style="text-decoration:none" href="detail.php?wordid=<?php echo htmlentities($word['id_word']); ?>">
-                                                <div class="card-body">
+                                                <div class="card-body d-flex justify-content-between">
+                                                <div>
                                                     <h5 class="card-title">
                                                         <?= $word['kanji'] ?>
                                                     </h5>
@@ -223,6 +236,11 @@ if (strlen($_SESSION['uid'] == 0)) {
                                                     <p class="card-subtitle mt-2" style="font: 15px Roboto;">
                                                         <?= $word['meaning'] ?>
                                                     </p>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="deleteWord[]" value="<?= $word['id_word'] ?>">
+                                                </div>
+                                                    
                                                 </div>
                                             </a>
                                         </div>
@@ -257,13 +275,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 </nav>
                             </div>
 
-                            <div class="topic-btn-gr">
-                                <button type="button" class="btn btn-dark">インポート</button>
-                                <button type="button" class="btn btn-dark">エクスポート</button>
-                                <button type="button" class="btn btn-danger" id="deleteButton" style="text-decoration: none; background-color: transparent; color: red;">
-                                    削除
-                                </button>
-                            </div>
+                           
 
 
                         </div>
