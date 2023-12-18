@@ -1,50 +1,51 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(isset($_POST['saveChanges'])){
-			if (mysqli_connect_error()) {
-				die("Connection failed: " . mysqli_connect_error());
-			}
 
-			$id_user = $_SESSION['uid'];
-
-			$kanji = $_POST["kanjiInput"];
-			$katakana = $_POST["katakanaInput"];
-			$romaji = $_POST["romajiInput"];
-			$hiragana = $_POST["hiraganaInput"];
-			$meaning = $_POST["meaningInput"];
-			$example = $_POST["exampleInput"];
-			$link = $_POST["linkInput"];
-
-			$selectedTopic = $_POST["topicSelect"];
-
-
-			$sql = "INSERT INTO words (kanji, katakana, romaji, hiragana, meaning, example, link, id_user) VALUES ('$kanji', '$katakana', '$romaji', '$hiragana', '$meaning', '$example', '$link', '$id_user')";
-
-			if (mysqli_query($con, $sql)) {
-				$wordId = mysqli_insert_id($con);
-				if (!empty($selectedTopic)) {
-					$insertWordTopicSQL = "INSERT INTO wordtopic (id_topic, id_word) VALUES ('$selectedTopic', '$wordId')";
-					mysqli_query($con, $insertWordTopicSQL);
-				}
-
-				echo '<p class="success">新しい語彙が正常に追加されました。</p>';
-			} else {
-				echo '<p class="error">Lỗi: ' . $sql . '<br>' . mysqli_error($con) . '</p>';
-			}
-
-			mysqli_close($con);
+	if(isset($_POST['saveChanges'])){
+		if (mysqli_connect_error()) {
+			die("Connection failed: " . mysqli_connect_error());
 		}
-    }
-    ?>
 
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+		$id_user = $_SESSION['uid'];
+
+		$kanji = $_POST["kanjiInput"];
+		$katakana = $_POST["katakanaInput"];
+		$romaji = $_POST["romajiInput"];
+		$hiragana = $_POST["hiraganaInput"];
+		$meaning = $_POST["meaningInput"];
+		$example = $_POST["exampleInput"];
+		$link = $_POST["linkInput"];
+
+		$selectedTopic = $_POST["topicSelect"];
+
+
+		$sql = "INSERT INTO words (kanji, katakana, romaji, hiragana, meaning, example, link, id_user) VALUES ('$kanji', '$katakana', '$romaji', '$hiragana', '$meaning', '$example', '$link', '$id_user')";
+
+		if (mysqli_query($con, $sql)) {
+			$wordId = mysqli_insert_id($con);
+			if (!empty($selectedTopic)) {
+				$insertWordTopicSQL = "INSERT INTO wordtopic (id_topic, id_word) VALUES ('$selectedTopic', '$wordId')";
+				mysqli_query($con, $insertWordTopicSQL);
+			}
+
+			echo '<script type="text/javascript">alert("新しい語彙が正常に追加されました。")</script>';
+			echo '<script type="text/javascript"> window.location = "./search.php"; </script>';
+		} else {
+			echo '<p class="error">Lỗi: ' . $sql . '<br>' . mysqli_error($con) . '</p>';
+		}
+
+		mysqli_close($con);
+	}
+
+?>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 				<div class="modal-content p-4">
 					<div class="d-flex justify-content-end">
         			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+						<form method="post" action="">
 							<div class="row mb-3">
 								<label for="kanjiInput" class="col-sm-2 col-form-label">語彙</label>
 								<div class="col-sm-10">
