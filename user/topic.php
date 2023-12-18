@@ -161,9 +161,12 @@ else {
             </div>
             <div class="col col-9">
             <div class="topic-btn-gr d-flex justify-content-between">
-                    <div>
+                    <div class="d-flex">
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#importModal">インポート</button>
-                        <button type="button" class="btn btn-dark">エクスポート</button>
+                        <form class="for-horizontal" action="export_csv.php" method="POST" name="upload_excel" enctype="multipart/form-data">
+                            <input type="hidden" name="topic_id" value="<?php echo isset($_GET['topic']) ? $_GET['topic'] : ''; ?>">
+                            <input type="submit" name="Export" class="btn btn-dark" value="エクスポート"/>
+                        </form>
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary" style="text-decoration: none">
