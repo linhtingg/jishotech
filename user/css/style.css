@@ -352,12 +352,17 @@ tr:nth-child(odd) {
 
 /* ============ TOPIC ================== */
 .topic-btn-gr {
-	margin-top: 50px;
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: flex-end;
 }
 .topic-btn-gr button {
+	border-radius: 18px;
+	margin-left: 20px;
+	padding: 5px 30px;
+}
+
+.topic-btn-gr input {
 	border-radius: 18px;
 	margin-left: 20px;
 	padding: 5px 30px;
@@ -382,6 +387,9 @@ tr:nth-child(odd) {
 	color: var(--primary-color);
 }
 
+#bookmarkIcon {
+	color: var(--primary-color);
+}
 
 /* ================ DETAIL ========== */
 .detail-custom {
