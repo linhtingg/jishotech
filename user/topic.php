@@ -20,52 +20,43 @@ else {
 <head>
     <title>JishoTech || Topic Page</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Custom Theme files -->
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <!--Custom Theme files-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<!--Custom Theme files-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <script type="application/x-javascript">
-    addEventListener("load", function() {
-        setTimeout(hideURLbar, 0);
-    }, false);
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	</script>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-    </script>
-    </script>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
 
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
 
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
-
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 1000);
-            });
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	
+	<!--start-smoth-scrolling-->
+	<!--webfonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+	<!--webfonts-->
 </head>
 
 <body>
@@ -206,30 +197,55 @@ else {
                             ?>
                             <div class="col mb-4 word-card">
                                 <div class="card h-100 word-card-custom">
-                                    <a style = "text-decoration:none" href="detail.php?wordid=<?php echo htmlentities($word['id_word']); ?>" >
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <?= $word['kanji'] ?>
-                                        </h5>
-                                        <p class="card-text">
-                                            <?= $word['hiragana'] ?>
-                                        </p>
-                                        <p class="card-text">
-                                            <?= $word['katakana'] ?>
-                                        </p>
-                                        <p class="card-subtitle mt-2"  style="font: 15px Roboto;">
-                                            <?= $word['meaning'] ?>
-                                        </p>
+                                    
+                                    <div class="card-body d-flex justify-content-between">
+                                        <div>
+                                        <a style = "text-decoration:none" href="detail.php?wordid=<?php echo htmlentities($word['id_word']); ?>" >
+                                            <h5 class="card-title">
+                                                <?= $word['kanji'] ?>
+                                            </h5>
+                                            <p class="card-text">
+                                                <?= $word['hiragana'] ?>
+                                            </p>
+                                            <p class="card-text">
+                                                <?= $word['katakana'] ?>
+                                            </p>
+                                            <p class="card-subtitle mt-2"  style="font: 15px Roboto;">
+                                                <?= $word['meaning'] ?>
+                                            </p>
+                                            </a>
+                                        </div>
+                                        <div class="bookmark">
+                                            <form method="post" id="bookmarkForm"> 
+                                            <input type="hidden" name="word_id" value="<?= $word['id_word'] ?>">
+                                            <button type="submit" name="submitBookmark" class="btn">
+                                                <i class="bi bi-bookmark" id="bookmarkIcon"></i>
+                                            </button>
+                                        </form>
+                                        </div>
                                     </div>
-                                    </a>
+                                    
                                 </div>
                             </div>
 
                         <?php
                         }
                         ?>
-                    </div>
+                    </div>  
 
+                    <?php
+                        if(isset($_POST['submitBookmark'])){
+                            $id_word = $_POST['word_id'];
+                            $id_user = $_SESSION['uid'];
+
+                            $sql = "INSERT INTO bookmarks (id_word, id_user) VALUES ('$id_word','$id_user')";
+                            if ($con->query($sql) === TRUE) {
+                                   
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . $con->error;
+                                }
+                        }
+                    ?>
                     <div class="mt-3 d-flex justify-content-center">
                         <nav aria-label="Page navigation example" class="custom-centered-nav">
                             <ul class="pagination pagination-custom">
@@ -290,6 +306,10 @@ $(document).ready(function() {
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 });
+    document.getElementById('bookmarkForm').addEventListener('submit', function() {
+        document.getElementById('bookmarkIcon').classList.remove('bi-bookmark');
+        document.getElementById('bookmarkIcon').classList.add('bi-bookmark-fill');
+    });
 
     </script>
 </body>
