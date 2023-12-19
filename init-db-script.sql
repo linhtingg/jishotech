@@ -43,6 +43,11 @@ CREATE TABLE IF NOT EXISTS users (
     lastlogout timestamp default current_timestamp
 );
 
+ALTER TABLE wordtopic
+ADD CONSTRAINT fk_wordtopic_word
+FOREIGN KEY (id_word) REFERENCES words(id_word)
+ON DELETE CASCADE;
+
 INSERT INTO `jishotech`.`users` (`id_user`, `username`, `email`, `password`, `phone_number`, `status`, `lastlogin`, `lastlogout`) VALUES (1, 'hoanglinh', 'hoanglinh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 0, '2023/11/20 9:20:00', '2023/11/20 10:20:00'),
  (2, 'ducanh', 'ducanh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456790', 0, '2023/11/21 9:20:00', '2023/11/21 9:20:00'),
  (3, 'vananh', 'vananh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456791', 0, '2023/11/22 21:20:00', '2023/11/22 21:20:00'),
