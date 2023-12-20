@@ -136,7 +136,7 @@ else {
                 <div class="detail-content">
 
                     <div class="detail-function d-flex justify-content-end">
-                        <button type="button" class="detail-edit" data-bs-toggle="modal" data-bs-target="#editModal">>
+                        <button type="button" class="detail-edit" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="bi bi-pencil-square"></i>
                         </button>
                         <?php include_once('includes/editModal.php'); ?>
@@ -192,7 +192,7 @@ else {
             url: 'includes/delete_word.php', 
             data: { wordId: wordId },
             success: function (response) {
-                alert(response);
+                // alert(response);
                 window.location.href = 'search.php';
             }
         });
