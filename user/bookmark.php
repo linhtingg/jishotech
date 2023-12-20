@@ -177,15 +177,13 @@ if (strlen($_SESSION['uid'] == 0)) {
                     <div class="col col-9">
                     <div class="topic-btn-gr d-flex justify-content-between">
                                 <div>
-                                    <button type="button" class="btn btn-dark">インポート</button>
-                                    <button type="button" class="btn btn-dark">エクスポート</button>
-                                    <button type="button" class="btn btn-danger" id="deleteButton" style="text-decoration: none;">
-                                        削除
-                                    </button>
-                                </div>
-                                <div>
                                     <button type="button" id="selectAll" class="btn btn-danger" style="text-decoration: none; background-color: transparent; color: red;">全て選択</button>
                                     <button type="button" id="deselectAll" class="btn btn-danger" style="text-decoration: none; background-color: transparent; color: red;">全て選択解除</button>
+                                </div>
+                                <div>
+                                    <!-- <button type="button" class="btn btn-dark">インポート</button>
+                                    <button type="button" class="btn btn-dark">エクスポート</button> -->
+                                    <button type="button" class="btn btn-danger" id="deleteButton" style="text-decoration: none;">削除</button>
                                 </div>
                             </div>
 
