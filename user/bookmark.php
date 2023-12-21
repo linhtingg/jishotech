@@ -286,7 +286,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                     var currentTopicId = getUrlParameter('topic');
                     if (currentTopicId === '' || currentTopicId === '0') {
 
-                        $('a[href="topic.php?topic=0"]').addClass('active');
+                        $('a[href="bookmark.php?topic=0"]').addClass('active');
                     } else {
                         $('.list-group-item').removeClass('active');
                         $('a[href="?topic=' + currentTopicId + '"]').addClass('active');
