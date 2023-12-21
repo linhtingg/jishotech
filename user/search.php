@@ -8,8 +8,9 @@ error_reporting(0);
 
 if (strlen($_SESSION['uid']== 0)) {
 	header('location: ../signin.php');
-} 
-else {
+} else {
+
+}
 	?>
 	<!DOCTYPE HTML>
 	<html>
@@ -101,7 +102,7 @@ else {
 				<button type="button" style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#addModal">
 					<i class="bi bi-plus-circle" style="font-size: 30px; font-weight: 500; color: #1677FF"></i>
 				</button>
-				<?php include_once('includes/createModal.php'); ?>
+				
 				</div>
 
 				<!-- <form method="get"> -->
@@ -117,6 +118,8 @@ else {
 						</div>
 					</div>
 				</form>
+
+				<?php include_once('includes/createModal.php'); ?>
 				<!-- END Input search form -->
 
 				<!-- result after query from input form -->
@@ -268,6 +271,3 @@ else {
 	</body>
 
 	</html>
-	<?php 
-} 
-?>

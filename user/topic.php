@@ -15,7 +15,8 @@
 
         $id_user = $_SESSION['uid'];
         $bookmarkQuery = $con->query("SELECT id_word FROM bookmarks WHERE id_user = '$id_user'");
-        $bookmark = $bookmarkQuery->fetch_all(MYSQLI_ASSOC);
+        $bookmark = $bookmarkQuery->fetch_all(MYSQLI_ASSOC);        
+
 
     ?>
 
@@ -223,21 +224,20 @@
                                             <div class="bookmark">
                                                 <form method="post" id="bookmarkForm"> 
                                                 <input type="hidden" name="word_id" value="<?= $word['id_word'] ?>">
-                                                <?php
-    $isBookmarked = false;
-
-    // Assuming $bookmark is an array containing associative arrays
-    foreach ($bookmark as $item) {
-        if ($item['id_word'] == $word['id_word']) {
-            $isBookmarked = true;
-            break; // Stop the loop once a match is found
-        }
-    }
-
-    $iconClass = $isBookmarked ? 'bi-bookmark-fill' : 'bi-bookmark';
-    ?>
-
+                                                
                                                 <button type="submit" name="submitBookmark" class="btn">
+                                                <?php
+                                                   $isBookmarked = false;
+                                                   foreach ($bookmark as $item) {
+                                                       if ($item['id_word'] == $word['id_word']) {
+                                                           $isBookmarked = true;
+                                                           break; 
+                                                       }
+                                                   }
+
+                                                    $iconClass = $isBookmarked ? 'bi-bookmark-fill' : 'bi-bookmark';
+                                                    ?>
+
                                                     <i class="bi <?= $iconClass ?>" id="bookmarkIcon"></i>
                                                 </button>
                                             </form>
@@ -253,17 +253,24 @@
                         </div>  
 
                         <?php
-                            if(isset($_POST['submitBookmark'])){
+                            if (isset($_POST['submitBookmark'])) {
                                 $id_word = $_POST['word_id'];
                                 $id_user = $_SESSION['uid'];
-
-                                $sql = "INSERT INTO bookmarks (id_word, id_user) VALUES ('$id_word','$id_user')";
-                                if ($con->query($sql) === TRUE) {
+                               
+                                $checkDuplicateQuery = $con->query("SELECT * FROM bookmarks WHERE id_word = '$id_word' AND id_user = '$id_user'");
+                                
+                                if ($checkDuplicateQuery->num_rows == 0) {
+                                    $sql = "INSERT INTO bookmarks (id_word, id_user) VALUES ('$id_word', '$id_user')";
                                     
+                                    if ($con->query($sql) === TRUE) {
                                     } else {
                                         echo "Error: " . $sql . "<br>" . $con->error;
                                     }
+                                } else {
+                                    //echo '<script>alert("Bookmark already exists for this user and word.");</script>';
+                                }
                             }
+                            
                         ?>
                         <div class="mt-3 d-flex justify-content-center">
                             <nav aria-label="Page navigation example" class="custom-centered-nav">
