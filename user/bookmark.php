@@ -15,14 +15,8 @@ if (strlen($_SESSION['uid'] == 0)) {
             $deleteBookmarksQuery = "DELETE FROM bookmarks WHERE id_word IN ($deleteWords)";
             $conn->query($deleteBookmarksQuery);
             // Xóa từ bảng con trước
-            $deleteWordTopicQuery = "DELETE FROM wordtopic WHERE id_word IN ($deleteWords)";
-            $conn->query($deleteWordTopicQuery);
 
-            // Tiếp theo, xóa từ bảng chính
-            $deleteQuery = "DELETE FROM words WHERE id_word IN ($deleteWords) AND id_user = {$_SESSION['uid']}";
-            $conn->query($deleteQuery);
-
-            if ($conn->query($deleteQuery)) {
+            if ($conn->query($deleteBookmarksQuery)) {
                 echo json_encode(['success' => true]);
                 exit;
             } else {
@@ -192,7 +186,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 <?php
                                 $currentTopic = isset($_GET['topic']) ? (int) $_GET['topic'] : 0;
                                 $searchTerm = isset($_GET['q']) ? $_GET['q'] : null;
-                                $query = "SELECT * FROM words WHERE id_user = {$_SESSION['uid']}";
+                                $query = "SELECT * FROM words WHERE (id_word IN (SELECT id_word FROM bookmarks WHERE id_user = {$_SESSION['uid']}))";
                                 if ($currentTopic != 0) {
                                     $query .= " AND ( id_word IN (SELECT id_word FROM wordtopic WHERE id_topic = {$currentTopic}))";
                                 }
